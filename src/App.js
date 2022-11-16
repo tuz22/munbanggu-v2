@@ -1,26 +1,31 @@
+import './default.css';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <title>배민문방구</title>
-      <header className="">
-        <img src="../assets/logo.png" alt="로고" />
-        <nav>
-          <a href='#'>전체</a>
-          <a href='#'>문구</a>
-          <a href='#'>리빙</a>
-          <a href='#'>책/메거진F</a>
-          <a href='#'>배민그린</a>
-          <a href='#'>배달이친구들</a>
-          <a href='#'>콜라보레이션</a>
-          <a href='#'>명예의 전당</a>
-        </nav>
-        <button>검색</button>
-        <button>장바구니</button>
-        <button>로그인</button>
-        <button>햄버거메뉴</button>
-      </header>
+      <div className='header-container bgOff'>
+        <header className="">
+          <img src="../assets/logo.png" alt="로고" />
+          <nav>
+            <a href='#'>전체</a>
+            <a href='#'>문구</a>
+            <a href='#'>리빙</a>
+            <a href='#'>책/메거진F</a>
+            <a href='#'>배민그린</a>
+            <a href='#'>배달이친구들</a>
+            <a href='#'>콜라보레이션</a>
+            <a href='#'>명예의 전당</a>
+          </nav>
+          <ul>
+            <li><button className='icon search-btn'>검색</button></li>
+            <li><button className='icon cart-btn'>장바구니</button></li>
+            <li><button className='login-btn'>로그인</button></li>
+            <li><button className='icon menu-btn'>햄버거메뉴</button></li>
+          </ul>
+        </header>
+      </div>
       <section>
         <div>메인베너</div>
         <article>
