@@ -38,19 +38,19 @@
   transition: border 0.4s ease 0s, background-color 0.4s ease 0s, top 0.2s ease 0s;
   border-bottom: 1px solid rgb(221, 221, 221);
 }
-header {
+.header-container header {
   position: sticky;
   top: 0px;
   left: 0px;
   padding-top: 0px;
   align-items: center;
 }
-header img {
+.header-container header img {
   width: 172px;
   height: 40px;
   padding: 6px 0px;
 }
-nav {
+.header-container nav {
   position: absolute;
   top: 0px;
   left: 210px;
@@ -60,24 +60,24 @@ nav {
   align-items: center;
   z-index: 1;
 }
-nav a {
+.header-container nav a {
   font-size: 18px;
   font-weight: 500;
   display: flex;
   line-height: 20px;
   margin-right: 22px;
 }
-ul {
+.header-container ul {
   list-style: none;
   height: 56px;
   display: flex;
   align-items: center;
   float: right;
 }
-li {
+.header-container li {
   margin-left: 16px;
 }
-h4 {
+.header-container h4 {
   font-size: 30px;
   font-family: hannaPro;
 }
@@ -109,4 +109,115 @@ h4 {
   border-radius: 17px;
   display: inline-flex;
   align-items: center;
+}
+
+/* subNav */
+.nav-container {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 380px;
+  height: 100%;
+  padding-top: 60px;
+  font-family: hanna11;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 2;
+  transition: right 0.4s ease 0s;
+}
+.nav-container header {
+  padding: 0px 40px 60px 40px;
+}
+.nav-container header h2, 
+.nav-container header a {
+  font-size: 32px;
+  color: rgb(68, 68, 68);
+  font-family: hanna11;
+  font-weight: 400;
+  line-height: 42px;
+  display: flex;
+  align-items: center;
+}
+.nav-container header a::after {
+  width: 9px;
+  height: 16px;
+  margin-left: 7px;
+  display: block;
+  background: url('../public/assets/icons/icon-arr-login.png') center center / 100% no-repeat;
+  content: "";
+}
+.nav-container nav {
+  height: 100%;
+  padding: 0px 40px 40px 40px;
+  overflow-y: scroll;
+  font-family: sans-serif;
+}
+.nav-container nav h2 {
+  font-size: 16px;
+  color: rgb(153, 153, 153);
+  font-weight: 400;
+  line-height: 20px;
+}
+.nav-container li {
+  margin-top: 14px;
+  color: rgb(68, 68, 68);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+.nav-container span {
+  display: block;
+  margin-top: 40px;
+}
+.nav-container nav::-webkit-scrollbar {
+  width: 6px;
+}
+.nav-container nav::-webkit-scrollbar-thumb {
+  background-color: gainsboro;
+  border-radius: 30px;
+}
+.nav-container nav::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.nav-container footer {
+  padding: 27px 60px;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+.nav-container footer div {
+  font-family: sans-serif;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav-container footer h2 {
+  width: 34px;
+  height: 34px;
+  text-indent: -1000em;
+  display: block;
+  background: url('../public/assets/icons/icon-customer-service.png') 0% 0% / 34px no-repeat;
+}
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 28px;
+  height: 28px;
+  display: block;
+  background: url('../public/assets/icons/icon-close.png') 0% 0% / 24px no-repeat;
+  text-indent: -1000em;
+  overflow: hidden;
+  z-index: 2;
+}
+.nav-bg {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
