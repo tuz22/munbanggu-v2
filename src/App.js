@@ -1,12 +1,13 @@
 import './default.css';
 import './App.css';
+import SubNav from './pages/SubNav';
 
 function App() {
   return (
     <div className="App">
       <title>배민문방구</title>
       <div className='header-container bgOff'>
-        <header className="">
+        <header className=''>
           <img src="../assets/logo.png" alt="로고" />
           <nav>
             <a href='#'>전체</a>
@@ -28,7 +29,7 @@ function App() {
       </div>
       <SubNav />
       <section>
-        <div>메인베너</div>
+        <Carousel />
         <article>
           <div>우리 같이 놀아요! 베너</div>
           <button>〈</button>
@@ -87,47 +88,35 @@ function App() {
   );
 }
 
-/* subNav */
-function SubNav() {
-  return (
-    <div>
-      <div className='nav-container'>
-        <header>
-          <h2>앗!</h2>
-          <a>로그인이 필요해요</a>
-        </header>
-        <nav>
-          <h2>테마</h2>
-          <ul>
-            <li>전체보기</li>
-            <li>목장갑은 뚝딱 만들어지지 않았다</li>
-            <li>나의 첫 배민문방구</li>
-            <li>[단독] 베스트셀러 출생의 비밀</li>
-          </ul>
-          <h2><span>카테고리</span></h2>
-          <ul>
-            <li>전체보기</li>
-            <li>~</li>
-            <li>명예의 전당</li>
-          </ul>
-        </nav>
-        <footer>
-          <div>
-            <h2>고객센터</h2>
-            <div>1:1 문의</div>
-            <div>|</div>
-            <div>이메일 문의</div>
+export default App;
 
-            {/* <ul>
-              <li>1:1 문의</li>
-              <li>이메일 문의</li>
-            </ul> */}
-          </div>
-        </footer>
-        <div className='close-btn'>닫기</div>
+function Carousel(){
+  return(
+    <div className='carousel'>
+      <div className='carousel-container'>
+        <div className='carousel-box'>
+            <img src="../assets/img/banner1.jpg" draggable="false" alt="메인베너1" />
+        </div>
+        <div className='carousel-box'>
+          <img src="../assets/img/banner2.jpg" draggable="false" alt="메인베너2" />
+        </div>
+        <div className='carousel-box'>
+          <img src="../assets/img/banner3.jpg" draggable="false" alt="메인베너3" />
+        </div>
+        <div className='carousel-box'>
+          <img src="../assets/img/banner4.jpg" draggable="false" alt="메인베너4" />
+        </div>
+        <div className='carousel-box'>
+          <img src="../assets/img/banner5.png" draggable="false" alt="메인베너5" />
+        </div>
       </div>
-      <div className='nav-bg'/>
+      <div className='carousel-btn'>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+      </div>
     </div>
   )
 }
-export default App;
