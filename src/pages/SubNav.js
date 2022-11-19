@@ -1,6 +1,8 @@
+import { useState } from 'react'
+
 function SubNav() {
   return (
-    <div className='hidden'>
+    <>
       <div className='nav-container'>
         <header>
           <h2>앗!</h2>
@@ -27,17 +29,11 @@ function SubNav() {
             <div>1:1 문의</div>
             <div>|</div>
             <div>이메일 문의</div>
-
-            {/* <ul>
-              <li>1:1 문의</li>
-              <li>이메일 문의</li>
-            </ul> */}
           </div>
         </footer>
-        <div className='close-btn'>닫기</div>
       </div>
       <div className='nav-bg'/>
-    </div>
+    </>
   )
 }
 

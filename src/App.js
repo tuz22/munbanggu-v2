@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Carousel from './pages/Carousel';
 
 function App() {
+  const [hidden, setHidden] = useState('hidden');
+  const [numb, setnumb] = useState(0);
   return (
     <div className="App">
       <title>배민문방구</title>
@@ -25,17 +27,20 @@ function App() {
             <li><button className='icon search-btn'>검색</button></li>
             <li><button className='icon cart-btn'>장바구니</button></li>
             <li><button className='login-btn'>로그인</button></li>
-            <li><button className='icon menu-btn'>햄버거메뉴</button></li>
+            <li><button onClick={() => { setHidden('')}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
       </div>
-      <SubNav />
+      <div className={hidden}>
+        <SubNav />
+        <div onClick={() => {setHidden('hidden')}} className='close-btn'>닫기</div>
+      </div>
       <section>
         <Carousel />
         <article>
           <div>우리 같이 놀아요! 베너</div>
           <button>〈</button>
-            <div>카드 컴포넌트</div>
+            <div>{numb}</div>
             <div>카드 컴포넌트</div>
             <div>카드 컴포넌트</div>
           <button>〉</button>

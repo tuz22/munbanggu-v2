@@ -126,7 +126,6 @@
   flex-direction: column;
   overflow: hidden;
   z-index: 2;
-  transition: right 0.4s ease 0s;
 }
 .nav-container header {
   padding: 0px 40px 60px 40px;
@@ -208,6 +207,7 @@
   width: 28px;
   height: 28px;
   display: block;
+  cursor: pointer;
   background: url('../public/assets/icons/icon-close.png') 0% 0% / 24px no-repeat;
   text-indent: -1000em;
   overflow: hidden;
@@ -242,9 +242,6 @@
 .carousel-container .carousel-box {
   width: 100vw;
   background-color: rgb(249, 249, 249);
-}
-.carousel-box {
-  
 }
 .carousel-container img {
   width: 100%;
