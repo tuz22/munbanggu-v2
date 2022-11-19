@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  z-index: 1;
 }
 .bgOff {
   position: sticky;
@@ -235,10 +236,15 @@
   display: flex;
   width: 500vw;
   /* justify-content: center; */
+  /* transform: translateX(-200vw);
+  transition: 1s; */
 }
 .carousel-container .carousel-box {
   width: 100vw;
   background-color: rgb(249, 249, 249);
+}
+.carousel-box {
+  
 }
 .carousel-container img {
   width: 100%;
@@ -252,6 +258,24 @@
   transform: translateX(-50%);
   display: flex;
   z-index: 1;
+}
+.slide-btn button {
+  width: 10px;
+  height: 10px;
+  margin: 6px 5px;
+  padding: 0px;
+  text-indent: -1000em;
+  overflow: hidden;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 20%;
+}
+.slide-btn button:hover {
+  opacity: 100%;
+}
+.prev-btn, .next-btn {
+  /* margin: 0px 20px; */
+  background-color: none;
 }
 article {
   margin: 40px;

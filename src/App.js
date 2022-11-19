@@ -1,6 +1,8 @@
 import './default.css';
 import './App.css';
 import SubNav from './pages/SubNav';
+import { useState } from 'react';
+import Carousel from './pages/Carousel';
 
 function App() {
   return (
@@ -89,34 +91,3 @@ function App() {
 }
 
 export default App;
-
-function Carousel(){
-  return(
-    <div className='carousel'>
-      <div className='carousel-container'>
-        <div className='carousel-box'>
-            <img src="../assets/img/banner1.jpg" draggable="false" alt="메인베너1" />
-        </div>
-        <div className='carousel-box'>
-          <img src="../assets/img/banner2.jpg" draggable="false" alt="메인베너2" />
-        </div>
-        <div className='carousel-box'>
-          <img src="../assets/img/banner3.jpg" draggable="false" alt="메인베너3" />
-        </div>
-        <div className='carousel-box'>
-          <img src="../assets/img/banner4.jpg" draggable="false" alt="메인베너4" />
-        </div>
-        <div className='carousel-box'>
-          <img src="../assets/img/banner5.png" draggable="false" alt="메인베너5" />
-        </div>
-      </div>
-      <div className='carousel-btn'>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-      </div>
-    </div>
-  )
-}
