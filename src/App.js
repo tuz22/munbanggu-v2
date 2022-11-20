@@ -3,10 +3,12 @@ import './App.css';
 import SubNav from './pages/SubNav';
 import { useState } from 'react';
 import Carousel from './pages/Carousel';
+import data from './data.js';
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
-  const [numb, setnumb] = useState(0);
+  let [eventItem] = useState(data);
+
   return (
     <div className="App">
       <title>배민문방구</title>
@@ -35,18 +37,24 @@ function App() {
         <SubNav />
         <div onClick={() => {setHidden('hidden')}} className='close-btn'>닫기</div>
       </div>
-      <section>
-        <Carousel />
-        <article>
-          <div>우리 같이 놀아요! 베너</div>
-          <button>〈</button>
-            <div>{numb}</div>
-            <div>카드 컴포넌트</div>
-            <div>카드 컴포넌트</div>
-          <button>〉</button>
-          <hr></hr>
+      <Carousel />
+      <section className='main-container'>
+        <article className='event-content'>
+          <img src="./../assets/img/card-banner1.jpg" alt="" />
+          {/* <button>〈</button> */}
+          <div className='event-list'>
+            {
+              eventItem.map((a, i) => {
+                return (
+                  <Card eventItem={eventItem[i]} />
+                )
+              })
+            }
+          </div>
+          {/* <button>〉</button> */}
+          {/* <hr></hr> */}
         </article>
-        <article>
+        {/* <article>
           <h4>요즘 잘 나가요</h4>
           <div>카드 컴포넌트4*2</div>
           <div>나의 첫 배민문방구 베너</div>
@@ -68,7 +76,7 @@ function App() {
           <div>카드 컴포넌트</div>
           <div>카드 컴포넌트</div>
           <div>카드 컴포넌트</div>
-        </article>
+        </article> */}
       </section>
       <footer>
         <img src="" alt="로고" />
@@ -93,6 +101,20 @@ function App() {
       </footer>
     </div>
   );
+}
+
+function Card(props){
+  
+  return (
+    <div className='event-card'>
+      <img src={props.eventItem.thumbnail1} alt="" />
+      <span className='badge'>{props.eventItem.state}</span>
+      <div className='info'>
+        <h4>{props.eventItem.title}</h4>
+        <p>{props.eventItem.price}원</p>
+      </div>
+    </div>
+  )
 }
 
 export default App;
