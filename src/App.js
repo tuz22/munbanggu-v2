@@ -3,11 +3,12 @@ import './App.css';
 import SubNav from './pages/SubNav';
 import { useState } from 'react';
 import Carousel from './pages/Carousel';
-import data from './data.js';
+import { eventData, data, firstData } from './data.js';
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
-  let [eventItem] = useState(data);
+  let [eventItem] = useState(eventData);
+  let [item] = useState(data)
 
   return (
     <div className="App">
@@ -46,26 +47,26 @@ function App() {
             {
               eventItem.map((a, i) => {
                 return (
-                  <Card eventItem={eventItem[i]} />
+                  <Card item={eventItem[i]} />
                 )
               })
             }
           </div>
           {/* <button>〉</button> */}
-          {/* <hr></hr> */}
         </article>
-        {/* <article>
-          <h4>요즘 잘 나가요</h4>
-          <div>카드 컴포넌트4*2</div>
-          <div>나의 첫 배민문방구 베너</div>
-          <button>〈</button>
-            <div>카드 컴포넌트</div>
-            <div>카드 컴포넌트</div>
-            <div>카드 컴포넌트</div>
-          <button>〉</button>
-          <hr></hr>
+        <article className='event-content'>
+          <h3 className='main-title'>요즘 잘 나가요</h3>
+          <div className='event-list'>
+            {
+              item.map((a, i) => {
+                return (
+                  <Card item={data[i]} />
+                )
+              })
+            }
+          </div>
         </article>
-        <article>
+        {/* <article> 
           <h4>새로 나왔어요</h4>
           <div>카드 컴포넌트4*4</div>
           <hr></hr>
@@ -107,11 +108,11 @@ function Card(props){
   
   return (
     <div className='event-card'>
-      <img src={props.eventItem.thumbnail1} alt="" />
-      <span className='badge'>{props.eventItem.state}</span>
+      <img src={props.item.thumbnail1} alt="" />
+      <span className='badge'>{props.item.state}</span>
       <div className='info'>
-        <h4>{props.eventItem.title}</h4>
-        <p>{props.eventItem.price}원</p>
+        <h4>{props.item.title}</h4>
+        <p>{props.item.price}원</p>
       </div>
     </div>
   )
