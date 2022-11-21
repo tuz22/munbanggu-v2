@@ -54,13 +54,13 @@ function App() {
           </div>
           {/* <button>〉</button> */}
         </article>
-        <article className='event-content'>
+        <article className='main-content'>
           <h3 className='main-title'>요즘 잘 나가요</h3>
-          <div className='event-list'>
+          <div className='card-list'>
             {
               item && item.map((a, i) => {
                 return (
-                  <Card item={data[i]} />
+                  <CardIndex item={data[i]} />
                 )
               })
             }
@@ -115,6 +115,24 @@ function Card(props){
         <p>{props.item.price}원</p>
       </div>
     </div>
+  )
+}
+
+function CardIndex(props){
+  
+  return (
+    // <div className='card-list'>
+      <div className='card-list-box'>
+        <div className='card-content'>
+          <img src={props.item.thumbnail1} alt="" />
+          <span className='badge'>{props.item.state}</span>
+          <div className='info'>
+            <h4>{props.item.title}</h4>
+            <p>{props.item.price}원</p>
+          </div>
+        </div>
+      </div>
+    // </div>
   )
 }
 
