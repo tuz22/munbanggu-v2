@@ -45,7 +45,7 @@ function App() {
           {/* <button>〈</button> */}
           <div className='event-list'>
             {
-              eventItem.map((a, i) => {
+              eventItem && eventItem.map((a, i) => {
                 return (
                   <Card item={eventItem[i]} />
                 )
@@ -58,7 +58,7 @@ function App() {
           <h3 className='main-title'>요즘 잘 나가요</h3>
           <div className='event-list'>
             {
-              item.map((a, i) => {
+              item && item.map((a, i) => {
                 return (
                   <Card item={data[i]} />
                 )
