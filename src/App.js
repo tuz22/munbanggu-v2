@@ -134,7 +134,7 @@ function Card(props){
   return (
     <div className='event-card'>
       <img src={props.item.thumbnail1} alt="" />
-      <span className='badge'>{props.item.state}</span>
+      <div className='badge'>{ props.item.state == '' ? '' : props.item.state }</div>
       <div className='info'>
         <h4>{props.item.title}</h4>
         <p>{props.item.price}원</p>
@@ -144,13 +144,14 @@ function Card(props){
 }
 
 function CardIndex(props){
-  
+  // console.log(props.item.state)
+
   return (
     // <div className='card-list'>
       <div className='card-list-box'>
         <div className='card-content'>
           <img src={props.item.thumbnail1} alt="" />
-          <span className='badge'>{props.item.state}</span>
+          <div className='badge'>{ props.item.state == '' ? '' : props.item.state }</div>
           <div className='info'>
             <h4>{props.item.title}</h4>
             <p>{props.item.price}원</p>
