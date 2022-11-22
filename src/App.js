@@ -8,7 +8,8 @@ import { eventData, data, firstData } from './data.js';
 function App() {
   const [hidden, setHidden] = useState('hidden');
   let [eventItem] = useState(eventData);
-  let [item] = useState(data)
+  let [item] = useState(data);
+  let [firstItem] = useState(firstData);
 
   return (
     <div className="App">
@@ -44,13 +45,19 @@ function App() {
           <img src="./../assets/img/card-banner1.jpg" alt="" />
           {/* <button>〈</button> */}
           <div className='event-list'>
-            {
-              eventItem && eventItem.map((a, i) => {
-                return (
-                  <Card item={eventItem[i]} />
-                )
-              })
-            }
+            <div className='card-box'>
+              {
+                eventItem && eventItem.map((a, i) => {
+                  return (
+                    <Card item={eventItem[i]} />
+                  )
+                })
+              }
+            </div>
+          </div>
+          <div className='btn-box'>
+            <button className='item-btn item-prev-btn'>prev</button>
+            <button className='item-btn item-next-btn'>next</button>
           </div>
           {/* <button>〉</button> */}
         </article>
@@ -64,6 +71,24 @@ function App() {
                 )
               })
             }
+          </div>
+        </article>
+        <article className='event-content'>
+          <img src="./../assets/img/card-banner2.png" alt="" />
+          <div className='event-list'>
+            <div className='card-box'>
+              {
+                firstItem && firstItem.map((a, i) => {
+                  return (
+                    <Card item={firstItem[i]} />
+                  )
+                })
+              }
+            </div>
+          </div>
+          <div className='btn-box'>
+            <button className='item-btn item-prev-btn'>prev</button>
+            <button className='item-btn item-next-btn'>next</button>
           </div>
         </article>
         {/* <article> 
