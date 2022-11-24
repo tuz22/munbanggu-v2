@@ -68,7 +68,7 @@ function App() {
             {
               item && item.map((a, i) => {
                 return (
-                  <CardIndex item={data[i]} />
+                  <CardIndex item={item[i]} />
                 )
               })
             }
@@ -92,18 +92,22 @@ function App() {
             <button className='item-btn item-next-btn'>next</button>
           </div>
         </article>
-        {/* <article> 
-          <h4>새로 나왔어요</h4>
-          <div>카드 컴포넌트4*4</div>
-          <hr></hr>
+        <article className='main-content'>
+          <h3 className='main-title'>지금은 할인중</h3>
+          <div className='card-list'>
+            {
+              saleItem && saleItem.map((a, i) => {
+                return (
+                  <div>
+                    <CardIndex item={saleItem[i]}>
+                    
+                    </CardIndex>
+                  </div>
+                )
+              })
+            }
+          </div>
         </article>
-        <article>
-          <h4>지금은 할인중</h4>
-          <div>카드 컴포넌트</div>
-          <div>카드 컴포넌트</div>
-          <div>카드 컴포넌트</div>
-          <div>카드 컴포넌트</div>
-        </article> */}
       </section>
       <footer>
         <img src="" alt="로고" />
@@ -146,16 +150,29 @@ function Card(props){
 
 function CardIndex(props){
   // console.log(props.item.state)
+  const discount = props.item.discount;
+  const price = props.item.price;
+  const sale = price * (100 - discount) * 0.01;
 
   return (
     // <div className='card-list'>
       <div className='card-list-box'>
         <div className='card-content'>
           <img src={props.item.thumbnail1} alt="" />
-          <div className='badge'>{ props.item.state == '' ? '' : props.item.state }</div>
+          <div className='badge'>
+            <span className='badge discount'>
+              { discount == null ? '' : discount + '% SALE'}
+            </span>
+            { props.item.state == '' ? '' : props.item.state }
+          </div>
           <div className='info'>
             <h4>{props.item.title}</h4>
-            <p>{props.item.price}원</p>
+            <div>
+              <p>
+                <strike className='sale-price'>{ discount == null ? '' : price + ' '}</strike>
+                { discount == null ? price + '원' : sale + '원' }
+              </p>
+            </div>
           </div>
         </div>
       </div>

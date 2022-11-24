@@ -331,6 +331,15 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.discount {
+  color: #F45452;
+  font-weight: 700;
+  padding-right: 5px;
+}
+.sale-price {
+  color: #CCC;
+
+}
 .info h4 {
   margin: 5px 0px 10px 0px;
 }
