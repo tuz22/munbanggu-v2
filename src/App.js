@@ -98,11 +98,7 @@ function App() {
             {
               saleItem && saleItem.map((a, i) => {
                 return (
-                  <div>
-                    <CardIndex item={saleItem[i]}>
-                    
-                    </CardIndex>
-                  </div>
+                    <CardIndex item={saleItem[i]} />
                 )
               })
             }
@@ -139,7 +135,9 @@ function Card(props){
   return (
     <div className='event-card'>
       <img src={props.item.thumbnail1} alt="" />
-      <div className='badge'>{ props.item.state == '' ? '' : props.item.state }</div>
+      <div className='badge'>
+        { props.item.state == '' ? '' : props.item.state }
+      </div>
       <div className='info'>
         <h4>{props.item.title}</h4>
         <p>{props.item.price}원</p>
@@ -157,13 +155,14 @@ function CardIndex(props){
   return (
     // <div className='card-list'>
       <div className='card-list-box'>
-        <div className='card-content'>
           <img src={props.item.thumbnail1} alt="" />
           <div className='badge'>
-            <span className='badge discount'>
-              { discount == null ? '' : discount + '% SALE'}
+            <span className='discount'>
+              { discount == null ? '' : discount + '% SALE' }
             </span>
-            { props.item.state == '' ? '' : props.item.state }
+            <span className='badge-name'>
+              { props.item.state == '' ? '' : props.item.state }
+            </span>
           </div>
           <div className='info'>
             <h4>{props.item.title}</h4>
@@ -174,7 +173,6 @@ function CardIndex(props){
               </p>
             </div>
           </div>
-        </div>
       </div>
     // </div>
   )

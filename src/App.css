@@ -305,7 +305,7 @@
 }
 .event-card {
   width: 312px;
-  height: 312px;
+  /* height: 312px; */
   margin: 60px 40px 80px 0px;
   font-size: 16px;
   text-align: center;
@@ -331,10 +331,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.badge-name {
+  padding: 0px 5px;
+}
 .discount {
   color: #F45452;
+  text-decoration: underline;
   font-weight: 700;
-  padding-right: 5px;
 }
 .sale-price {
   color: #CCC;
@@ -351,7 +354,7 @@
 }
 
 .main-title {
-  margin-top: 120px;
+  margin-top: 60px;
   padding-top: 120px;
   font-size: 24px;
   font-weight: 800;
