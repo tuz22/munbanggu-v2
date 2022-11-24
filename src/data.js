@@ -128,4 +128,40 @@ const firstData = [
   },
   
 ]
-export {eventData, data, firstData};
+
+const saleData = [
+  {
+    id : 0,
+    title : "양말세트. ㅋㅋ골고루 양말",
+    price : 27500,
+    state : "",
+    thumbnail1 : "https://cdn-mart.baemin.com/sellergoods/main/662f9d40-c272-43c2-924f-d852980fb0a1.png",
+    thumbnail2 : "https://cdn-mart.baemin.com/sellergoods/main/6dd2e7ea-72aa-477c-bb6e-905c3082becb.png",
+  },
+  {
+    id : 1,
+    title : "양말세트. ㅋㅋ안 보이는 양말",
+    price : 20000,
+    state : "BEST",
+    thumbnail1 : "https://cdn-mart.baemin.com/sellergoods/main/55bbc3ca-10a5-4f16-a4ce-579da43219ce.jpg",
+    thumbnail2 : "https://cdn-mart.baemin.com/sellergoods/main/85d9262e-463d-4707-99a7-fdb3086534eb.png",
+  },
+  {
+    id : 2,
+    title : "양말세트. 왼발 오른발",
+    price : 27500,
+    state : "",
+    thumbnail1 : "https://cdn-mart.baemin.com/sellergoods/main/88730e5d-2504-44df-9a77-cddf516de2d6.png",
+    thumbnail2 : "https://cdn-mart.baemin.com/sellergoods/main/45dc3dcd-04a8-4f4f-9f81-01fc0225dfeb.png",
+  },
+  {
+    id : 3,
+    title : "맥주짠세트. 비어주세요",
+    price : 10000,
+    state : "BEST",
+    thumbnail1 : "https://cdn-mart.baemin.com/sellergoods/main/47cfc046-1ac5-4444-8486-5195a2eb525f.png",
+    thumbnail2 : "https://cdn-mart.baemin.com/sellergoods/main/739b58a3-a356-42aa-b5b3-3a03810f0187.png",
+  },
+
+]
+export {eventData, data, firstData, saleData};

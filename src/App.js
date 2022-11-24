@@ -3,13 +3,14 @@ import './App.css';
 import SubNav from './pages/SubNav';
 import { useState } from 'react';
 import Carousel from './pages/Carousel';
-import { eventData, data, firstData } from './data.js';
+import { eventData, data, firstData, saleData } from './data.js';
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
-  let [eventItem] = useState(eventData);
-  let [item] = useState(data);
-  let [firstItem] = useState(firstData);
+  const [eventItem] = useState(eventData);
+  const [item] = useState(data);
+  const [firstItem] = useState(firstData);
+  const [saleItem] = useState(saleData);
 
   return (
     <div className="App">
