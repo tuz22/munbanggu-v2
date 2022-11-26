@@ -105,7 +105,7 @@ function App() {
           </div>
         </article>
       </section>
-      <footer>
+      <footer className='footer'>
         <div className='footer-container'>
           <h2 className='footer-logo'>
             <span>배민문방구</span>
