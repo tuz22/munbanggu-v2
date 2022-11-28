@@ -32,13 +32,13 @@ function App() {
             <li><button className='icon search-btn'>검색</button></li>
             <li><button className='icon cart-btn'>장바구니</button></li>
             <li><button className='login-btn'>로그인</button></li>
-            <li><button onClick={() => { setHidden('')}} className='icon menu-btn'>햄버거메뉴</button></li>
+            <li><button onClick={() => { setHidden(''); bodyHold(1)}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
       </div>
       <div className={hidden}>
         <SubNav />
-        <div onClick={() => {setHidden('hidden')}} className='close-btn'>닫기</div>
+        <div onClick={() => {setHidden('hidden'); bodyHold(0)}} className='close-btn'>닫기</div>
       </div>
       <Carousel />
       <section className='main-container'>
@@ -188,6 +188,17 @@ function CardIndex(props){
       </div>
     // </div>
   )
+}
+
+function bodyHold(state){
+  const body = document.querySelector('body').style;
+  if (state == 1) {
+    body.overflow = 'hidden';
+    body.height = '100%';
+  } else {
+    body.overflow = '';
+    body.height = '';
+  }
 }
 
 export default App;
