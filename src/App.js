@@ -4,6 +4,7 @@ import SubNav from './pages/SubNav';
 import { useState } from 'react';
 import Carousel from './pages/Carousel';
 import { eventData, data, firstData, saleData } from './data.js';
+import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
@@ -11,6 +12,8 @@ function App() {
   const [item] = useState(data);
   const [firstItem] = useState(firstData);
   const [saleItem] = useState(saleData);
+  
+  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -19,14 +22,14 @@ function App() {
         <header className=''>
           <img src="../assets/logo.png" alt="로고" />
           <nav>
-            <a href='#'>전체</a>
-            <a href='#'>문구</a>
-            <a href='#'>리빙</a>
-            <a href='#'>책/메거진F</a>
-            <a href='#'>배민그린</a>
-            <a href='#'>배달이친구들</a>
-            <a href='#'>콜라보레이션</a>
-            <a href='#'>명예의 전당</a>
+            <Link onClick={() => { navigate('/') }}>전체</Link>
+            <Link onClick={() => { navigate('/') }}>문구</Link>
+            <Link onClick={() => { navigate('/') }}>리빙</Link>
+            <Link onClick={() => { navigate('/') }}>책/메거진F</Link>
+            <Link onClick={() => { navigate('/') }}>배민그린</Link>
+            <Link onClick={() => { navigate('/') }}>배달이친구들</Link>
+            <Link onClick={() => { navigate('/') }}>콜라보레이션</Link>
+            <Link onClick={() => { navigate('/') }}>명예의 전당</Link>
           </nav>
           <ul>
             <li><button className='icon search-btn'>검색</button></li>
