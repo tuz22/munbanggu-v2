@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Carousel from './pages/Carousel';
 import { eventData, data, firstData, saleData } from './data.js';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
+import Detail from './pages/Detail.js';
+import { categories } from './categories.js';
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
@@ -12,6 +14,7 @@ function App() {
   const [item] = useState(data);
   const [firstItem] = useState(firstData);
   const [saleItem] = useState(saleData);
+  const [category] = useState(categories);
   
   const navigate = useNavigate();
 
@@ -20,21 +23,23 @@ function App() {
       <title>배민문방구</title>
       <div className='header-container bgOff'>
         <header className=''>
-          <img src="../assets/logo.png" alt="로고" />
+            <img src="./../assets/logo.png" alt="로고" className='logo' Link onClick={() => { navigate('/') }}/>
           <nav>
-            <Link onClick={() => { navigate('/') }}>전체</Link>
-            <Link onClick={() => { navigate('/') }}>문구</Link>
-            <Link onClick={() => { navigate('/') }}>리빙</Link>
-            <Link onClick={() => { navigate('/') }}>책/메거진F</Link>
-            <Link onClick={() => { navigate('/') }}>배민그린</Link>
-            <Link onClick={() => { navigate('/') }}>배달이친구들</Link>
-            <Link onClick={() => { navigate('/') }}>콜라보레이션</Link>
-            <Link onClick={() => { navigate('/') }}>명예의 전당</Link>
+            <ul>
+              <li Link onClick={() => { navigate('/goods/list/0') }}>전체</li>
+              <li Link onClick={() => { navigate('/goods/list/1') }}>문구</li>
+              <li Link onClick={() => { navigate('/goods/list/2') }}>리빙</li>
+              <li Link onClick={() => { navigate('/goods/list/3') }}>책/메거진F</li>
+              <li Link onClick={() => { navigate('/goods/list/4') }}>배민그린</li>
+              <li Link onClick={() => { navigate('/goods/list/5') }}>배달이친구들</li>
+              <li Link onClick={() => { navigate('/goods/list/6') }}>콜라보레이션</li>
+              <li Link onClick={() => { navigate('/goods/list/7') }}>명예의 전당</li>
+            </ul>
           </nav>
           <ul>
             <li><button className='icon search-btn'>검색</button></li>
-            <li><button className='icon cart-btn'>장바구니</button></li>
-            <li><button className='login-btn'>로그인</button></li>
+            <li className='icon cart-btn' Link onClick={() => { navigate('/cart') }}>장바구니</li>
+            <li className='login-btn' Link onClick={() => { navigate('/login') }}>로그인</li>
             <li><button onClick={() => { setHidden(''); bodyHold(1)}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
@@ -43,71 +48,83 @@ function App() {
         <SubNav />
         <div onClick={() => {setHidden('hidden'); bodyHold(0)}} className='close-btn'>닫기</div>
       </div>
-      <Carousel />
-      <section className='main-container'>
-        <article className='event-content'>
-          <img src="./../assets/img/card-banner1.jpg" alt="" />
-          {/* <button>〈</button> */}
-          <div className='event-list'>
-            <div className='card-box'>
-              {
-                eventItem && eventItem.map((a, i) => {
-                  return (
-                    <Card item={eventItem[i]} />
-                  )
-                })
-              }
-            </div>
-          </div>
-          <div className='btn-box'>
-            <button className='item-btn item-prev-btn'>prev</button>
-            <button className='item-btn item-next-btn'>next</button>
-          </div>
-          {/* <button>〉</button> */}
-        </article>
-        <article className='main-content'>
-          <h3 className='main-title'>요즘 잘 나가요</h3>
-          <div className='card-list'>
-            {
-              item && item.map((a, i) => {
-                return (
-                  <CardIndex item={item[i]} />
-                )
-              })
-            }
-          </div>
-        </article>
-        <article className='event-content'>
-          <img src="./../assets/img/card-banner2.png" alt="" />
-          <div className='event-list'>
-            <div className='card-box'>
-              {
-                firstItem && firstItem.map((a, i) => {
-                  return (
-                    <Card item={firstItem[i]} />
-                  )
-                })
-              }
-            </div>
-          </div>
-          <div className='btn-box'>
-            <button className='item-btn item-prev-btn'>prev</button>
-            <button className='item-btn item-next-btn'>next</button>
-          </div>
-        </article>
-        <article className='main-content'>
-          <h3 className='main-title'>지금은 할인중</h3>
-          <div className='card-list'>
-            {
-              saleItem && saleItem.map((a, i) => {
-                return (
-                    <CardIndex item={saleItem[i]} />
-                )
-              })
-            }
-          </div>
-        </article>
-      </section>
+      {/* 메인 페이지 */}
+      <Routes>
+        <Route path="/" element= {
+          <>
+            <Carousel />
+            <section className='main-container'>
+              <article className='event-content'>
+                <img src="./../assets/img/card-banner1.jpg" alt="" />
+                <div className='event-list'>
+                  <div className='card-box'>
+                    {
+                      eventItem && eventItem.map((a, i) => {
+                        return (
+                          <Card item={eventItem[i]} />
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+                <div className='btn-box'>
+                  <button className='item-btn item-prev-btn'>prev</button>
+                  <button className='item-btn item-next-btn'>next</button>
+                </div>
+              </article>
+              <article className='main-content'>
+                <h3 className='main-title'>요즘 잘 나가요</h3>
+                <div className='card-list'>
+                  {
+                    item && item.map((a, i) => {
+                      return (
+                        <CardIndex item={item[i]} />
+                      )
+                    })
+                  }
+                </div>
+              </article>
+              <article className='event-content'>
+                <img src="./../assets/img/card-banner2.png" alt="" />
+                <div className='event-list'>
+                  <div className='card-box'>
+                    {
+                      firstItem && firstItem.map((a, i) => {
+                        return (
+                          <Card item={firstItem[i]} />
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+                <div className='btn-box'>
+                  <button className='item-btn item-prev-btn'>prev</button>
+                  <button className='item-btn item-next-btn'>next</button>
+                </div>
+              </article>
+              <article className='main-content'>
+                <h3 className='main-title'>지금은 할인중</h3>
+                <div className='card-list'>
+                  {
+                    saleItem && saleItem.map((a, i) => {
+                      return (
+                          <CardIndex item={saleItem[i]} />
+                      )
+                    })
+                  }
+                </div>
+              </article>
+            </section>
+          </>
+      } />
+      <Route path="/goods/detail/:id" element={<Detail />}></Route>
+      {
+        categories.map((a, i) => {
+          const listUrl = "goods/list/"+ i
+          return ( <Route path={listUrl} element={<List category={category[i]}/>} />)
+        })
+      }
+      </Routes>
       <footer className='footer'>
         <div className='footer-container'>
           <h2 className='footer-logo'>
@@ -146,9 +163,12 @@ function App() {
 }
 
 function Card(props){
-  
+  let detail = '/goods/detail/' + props.item.id;
+  // console.log(detail)
+
   return (
     <div className='event-card'>
+      <a href={detail}>
       <img src={props.item.thumbnail1} alt="" />
       <div className='badge'>
         { props.item.state == '' ? '' : props.item.state }
@@ -157,6 +177,7 @@ function Card(props){
         <h4>{props.item.title}</h4>
         <p>{props.item.price}원</p>
       </div>
+      </a>
     </div>
   )
 }
@@ -166,10 +187,12 @@ function CardIndex(props){
   const discount = props.item.discount;
   const price = props.item.price;
   const sale = price * (100 - discount) * 0.01;
+  let detail = '/goods/detail/' + props.item.id;
 
   return (
     // <div className='card-list'>
       <div className='card-list-box'>
+        <a href={detail}>
           <img src={props.item.thumbnail1} alt="" />
           <div className='badge'>
             <span className='discount'>
@@ -188,6 +211,7 @@ function CardIndex(props){
               </p>
             </div>
           </div>
+        </a>
       </div>
     // </div>
   )
@@ -202,6 +226,16 @@ function bodyHold(state){
     body.overflow = '';
     body.height = '';
   }
+}
+
+function List(props) {
+  return (
+    <div>
+      <h4>{props.category.category}</h4>
+      <span>{props.category.count}</span>
+      <article>{props.category.content}</article>
+    </div>
+  )
 }
 
 export default App;

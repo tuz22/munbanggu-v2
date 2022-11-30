@@ -66,12 +66,13 @@
   align-items: center;
   z-index: 1;
 }
-.header-container nav a {
-  font-size: 18px;
-  font-weight: 500;
+.header-container nav li {
+  font-size: 17px;
+  font-weight: 600;
   display: flex;
   line-height: 20px;
-  margin-right: 22px;
+  color: #303030;
+  /* margin-right: -1px; */
 }
 .header-container ul {
   list-style: none;
@@ -86,6 +87,9 @@
 .header-container h4 {
   font-size: 30px;
   font-family: hannaPro;
+}
+.logo, nav, button, ul {
+  cursor: pointer;
 }
 .icon {
   width: 32px;
@@ -316,6 +320,10 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+}
+.event-card a {
+  width: 312px;
+  height: 312px;
 }
 .event-card img {
   width: 100%;
