@@ -492,3 +492,250 @@
   display: inline-block;
   content: "";
 }
+
+/* detail 페이지 - header*/
+.detail-container {
+  width: 100%;
+}
+.detail-header {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.item-info {
+  width: 250px;
+  /* flex: 0 0 250px; */
+}
+.item-info .badge {
+  margin-bottom: 10px;
+  justify-content: flex-start;
+}
+.item-info .name {
+  font-size: 29px;
+  line-height: 42px;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  word-break: keep-all;
+}
+.item-info .price {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  display: flex;
+}
+.item-preview {
+  width: 580px;
+  margin: 0 35px;
+}
+.item-preview .carousel {
+  /* margin-right: 30px; */
+  width: 500px;
+  margin-top: 0;
+  margin-left: 40px;
+  overflow: hidden;
+}
+.item-preview .carousel-container {
+  display: flex;
+  width: 1000px;
+  /* justify-content: center; */
+  /* transform: translateX(-200vw);
+  transition: 1s; */
+}
+.item-preview .carousel-container .carousel-box {
+  /* width: 580px; */
+  background-color: rgb(249, 249, 249);
+}
+.item-preview .carousel-container img {
+  width: 100%;
+  height: 100%;
+  min-width: 500px;
+  min-height: 500px;
+}
+.item-preview .carousel-btn {
+  position: relative;
+  /* left: 50%; */
+  /* margin-top: -40px; */
+  /* transform: translateX(-50%); */
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+}
+.item-order {
+  width: 300px;
+}
+.shipping {
+  padding: 16px 0;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+.shipping dt {
+  color: black;
+  font-weight: 500;
+  line-height: 19px;
+}
+.shipping dd {
+  margin-top: 10px;
+  color: #999;
+  line-height: 24px;
+}
+.buy-list {
+  position: relative;
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #FAFAFA;
+  border-radius: 6px;
+}
+.buy-list h4 {
+  width: 228px;
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+  line-height: 17px;
+}
+.buy-options {
+  margin-top: 14px;
+  display: flex;
+}
+.quantity {
+  position: relative;
+  width: 108px;
+  height: 26px;
+  padding: 0 30px;
+}
+.quantity input[type=number], .quantity input[type=text] {
+  width: 100%;
+  height: 24px;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+}
+.quantity .btn-minus, .quantity .btn-plus {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  text-indent: -1000em;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  margin-top: -26px;
+  overflow: hidden;
+}
+.quantity .btn-minus {
+  left: 0;
+  background: white url("../public/assets/icons/icon_minus.png") center center no-repeat;
+  background-size: 12px auto;
+}
+.quantity .btn-plus {
+  right: 0;
+  background: white url("../public/assets/icons/icon_plus.png") center center no-repeat;
+  background-size: 12px auto;
+  margin-right: -6px;
+}
+.item-buy .price {
+  margin-left: auto;
+}
+.item-buy .total-price {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+.item-buy .total-price dt {
+  margin-right: 40px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -1px;
+  /* flex: 0 0 auto; */
+}
+.item-buy .total-price dd {
+  margin-left: auto;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.buy-btn-box {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+.detail-cart-btn {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+  background: url("../public/assets/icons/btn_cart.png") center center no-repeat;
+  background-size: 28px auto;
+  text-indent: -1000em;
+  overflow: hidden;
+  display: block;
+  transition: .3s ease background-image;
+}
+.detail-buy-btn {
+  width: 100%;
+  height: 52px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: white;
+  background-color: #2AC1BC;
+  border-radius: 6px;
+  letter-spacing: -1px;
+}
+
+/* detail 페이지 - content */
+.view-content {
+  position: relative;
+  margin-top: 50px;
+}
+.view-tab {
+  position: relative;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 10;
+}
+.view-tab ul {
+  /* width: 1200px; */
+  height: 100%;
+  margin: 0 auto;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  background: white;
+  display: flex;
+  cursor: pointer;
+}
+.view-tab ul li {
+  width: 100%;
+  font-size: 16px;
+  color: #CCC;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+}
+.view-tab a {
+  color: #CCC;
+}
+.view-tab .active {
+  color: black;
+}
+.view-tab ul li a {
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view-tab ul li::before {
+  width: 1px;
+  height: 16px;
+  background-color: #DDD;
+  display: block;
+  content: '';
+}

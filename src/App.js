@@ -117,7 +117,7 @@ function App() {
             </section>
           </>
       } />
-      <Route path="/goods/detail/:id" element={<Detail />}></Route>
+      <Route path="/goods/detail/:id" element={<Detail item={eventItem}/>}></Route>
       {
         categories.map((a, i) => {
           const listUrl = "goods/list/"+ i

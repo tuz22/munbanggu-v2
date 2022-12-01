@@ -6,6 +6,9 @@ const eventData = [
     state : "NEW",
     thumbnail1 : "https://cdn-mart.baemin.com/sellergoods/main/41a43897-d641-464a-90ec-aee1191ca98e.jpg",
     thumbnail2 : "https://cdn-mart.baemin.com/sellergoods/main/a7a129dd-6519-45c6-8bc4-4914892be264.jpg",
+    content1 : "https://cdn-mart.baemin.com/sellergoods/desc/6dee868e-9009-4caa-bf38-a93f56f3edae.gif",
+    content2 : "https://cdn-mart.baemin.com/sellergoods/desc/99c8c825-8e84-448d-b8d4-a746f1cdcdb9.jpg",
+    content3 : "https://cdn-mart.baemin.com/sellergoods/desc/04d3f7ba-4431-48f3-b119-5a08bcb08577.jpg"
   },
   {
     id : 1,
