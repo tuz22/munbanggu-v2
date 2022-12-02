@@ -98,6 +98,16 @@
   text-indent: -1000em;
   display: block;
 }
+.logo {
+  width: 172px;
+  height: 40px;
+  position: relative;
+  text-indent: -1000em;
+  margin-top: 7px;
+}
+.logo-btn {
+  background: url('../public/assets/logo.png') 0% 0% / 172px no-repeat;
+}
 .search-btn {
   background: url('../public/assets/icons/icon-search.png') 0% 0% / 28px no-repeat;
 }

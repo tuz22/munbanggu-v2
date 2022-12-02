@@ -25,7 +25,7 @@ function App() {
       <title>배민문방구</title>
       <div className='header-container bgOff'>
         <header className=''>
-            <img src="./../assets/logo.png" alt="로고" className='logo' Link onClick={() => { navigate('/') }}/>
+            <button className='logo logo-btn' Link onClick={() => { navigate('/') }}>로고</button>
           <nav>
             <ul>
               <li Link onClick={() => { navigate('/goods/list/0') }}>전체</li>
