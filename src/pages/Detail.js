@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { Context } from './../App.js';
 
 let Container = styled.div`
   width : 1200px;
@@ -10,12 +11,21 @@ let Container = styled.div`
   padding : 80px 0 200px 0;
   flex-diraction : column;
 `
-
-
+let ViewBox = styled.div`
+  padding : 80px 0 0 0;
+`
+let ItemInfo = styled.div`
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+`
 
 function Detail(props) {
-  const {id} = useParams();
-  const itemId = props.item.find((a) => a.id == id);
+  const {id} = useParams()
+  const itemId = props.item.find((a) => a.id == id)
+  const [tab, setTab] = useState(0)
+  const tabData = ['상품정보', '기본정보', '상품후기'];
+  const [active, setActive] = useState('')
 
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -81,7 +91,7 @@ function Detail(props) {
           <div className='item-order'>
             <dl className='shipping'>
               <dt>배송정보</dt>
-              <dd>3,000원 (30,000원 이상 구매 시 무료) <br /> 오후 1시 당이배송마감</dd>
+              <dd>3,000원 (30,000원 이상 구매 시 무료) <br /> 오후 1시 당일배송마감</dd>
             </dl>
             <section className="item-buy">
               <div className='buy-list'>
@@ -113,21 +123,41 @@ function Detail(props) {
         <section className='view-content'>
           <div className='view-tab'>
             <ul>
-              <li>
-                <a className='active'>상품정보</a>
-              </li>
-              <li>
-                <a>기본정보</a>
-              </li>
-              <li>
-                <a>상품후기</a>
-              </li>
+              {
+                tabData && tabData.map((a, i) => {
+                  return (
+                    <li>
+                      <a className={i == active ? 'active' : ''} value={i} Link onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
+                    </li>
+                  )
+                })
+              }
             </ul>
           </div>
+          <TabContent tab={tab} id={id}/>
         </section>
       </Container>
     </div>
   )
 }
 
+function TabContent({tab, id}){
+  const {eventItem} = useContext(Context);
+  const itemInfo = eventItem[id];
+  console.log('id'+id)
+  console.log(eventItem[id]);
+  
+  return (
+    <ViewBox>
+      { [ 
+          <ItemInfo>
+            <img src={itemInfo.content1} alt="" />
+            <img src={itemInfo.content2} alt="" />
+            <img src={itemInfo.content3} alt="" />
+          </ItemInfo>,
+          <div>내용1</div>, 
+          <div>내용2</div> ][tab] }
+    </ViewBox>
+  )
+}
 export default Detail;

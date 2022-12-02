@@ -1,12 +1,13 @@
 import './default.css';
 import './App.css';
 import SubNav from './pages/SubNav';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import Carousel from './pages/Carousel';
 import { eventData, data, firstData, saleData } from './data.js';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
+export const Context = createContext();
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
@@ -15,8 +16,9 @@ function App() {
   const [firstItem] = useState(firstData);
   const [saleItem] = useState(saleData);
   const [category] = useState(categories);
-  
+
   const navigate = useNavigate();
+
 
   return (
     <div className="App">
@@ -117,7 +119,11 @@ function App() {
             </section>
           </>
       } />
-      <Route path="/goods/detail/:id" element={<Detail item={eventItem}/>}></Route>
+      <Route path="/goods/detail/:id" element={
+        <Context.Provider value={ {eventItem} }>
+          <Detail item={eventItem}/>
+        </Context.Provider>
+      }></Route>
       {
         categories.map((a, i) => {
           const listUrl = "goods/list/"+ i
