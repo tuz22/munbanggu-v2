@@ -7,9 +7,11 @@ import { eventData, data, firstData, saleData } from './data.js';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
+import List from './pages/List.js';
 import Card from './component/Card.js'
 import CardIndex from './component/CardIndex.js'
 export const Context = createContext();
+export const Context2 = createContext();
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
@@ -129,7 +131,11 @@ function App() {
       {
         categories.map((a, i) => {
           const listUrl = "goods/list/"+ i
-          return ( <Route path={listUrl} element={<List category={category[i]}/>} />)
+          return ( <Route path={listUrl} element={
+            <Context2.Provider value={ {item} }>
+              <List category={category[i]}/>
+            </Context2.Provider>
+          } />)
         })
       }
       </Routes>

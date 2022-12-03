@@ -816,3 +816,25 @@
   font-size: 18px;
   margin-top: 20px;
 }
+
+/* List 페이지 */
+.list-header h2 {
+  font-family: hanna11;
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 74px;
+  display: flex;
+  align-items: flex-start;
+}
+.list-header span {
+  margin: 8px 0px 0px 14px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.list-header article {
+  margin-top: 23px;
+  font-family: minsansVF;
+  font-size: 16px;
+  line-height: 29px;
+}
