@@ -1,12 +1,14 @@
 import './default.css';
 import './App.css';
-import SubNav from './pages/SubNav';
+import SubNav from './component/SubNav.js';
 import { createContext, useState } from 'react';
-import Carousel from './pages/Carousel';
+import Carousel from './component/Carousel.js';
 import { eventData, data, firstData, saleData } from './data.js';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
+import Card from './component/Card.js'
+import CardIndex from './component/CardIndex.js'
 export const Context = createContext();
 
 function App() {
@@ -168,61 +170,6 @@ function App() {
   );
 }
 
-function Card(props){
-  let detail = '/goods/detail/' + props.item.id;
-  // console.log(detail)
-
-  return (
-    <div className='event-card'>
-      <a href={detail}>
-      <img src={props.item.thumbnail1} alt="" />
-      <div className='badge'>
-        { props.item.state == '' ? '' : props.item.state }
-      </div>
-      <div className='info'>
-        <h4>{props.item.title}</h4>
-        <p>{props.item.price}원</p>
-      </div>
-      </a>
-    </div>
-  )
-}
-
-function CardIndex(props){
-  // console.log(props.item.state)
-  const discount = props.item.discount;
-  const price = props.item.price;
-  const sale = price * (100 - discount) * 0.01;
-  let detail = '/goods/detail/' + props.item.id;
-
-  return (
-    // <div className='card-list'>
-      <div className='card-list-box'>
-        <a href={detail}>
-          <img src={props.item.thumbnail1} alt="" />
-          <div className='badge'>
-            <span className='discount'>
-              { discount == null ? '' : discount + '% SALE' }
-            </span>
-            <span className='badge-name'>
-              { props.item.state == '' ? '' : props.item.state }
-            </span>
-          </div>
-          <div className='info'>
-            <h4>{props.item.title}</h4>
-            <div>
-              <p>
-                <strike className='sale-price'>{ discount == null ? '' : price + ' '}</strike>
-                { discount == null ? price + '원' : sale + '원' }
-              </p>
-            </div>
-          </div>
-        </a>
-      </div>
-    // </div>
-  )
-}
-
 function bodyHold(state){
   const body = document.querySelector('body').style;
   if (state == 1) {
@@ -232,16 +179,6 @@ function bodyHold(state){
     body.overflow = '';
     body.height = '';
   }
-}
-
-function List(props) {
-  return (
-    <div>
-      <h4>{props.category.category}</h4>
-      <span>{props.category.count}</span>
-      <article>{props.category.content}</article>
-    </div>
-  )
 }
 
 export default App;
