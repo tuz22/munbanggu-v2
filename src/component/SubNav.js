@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { categories } from '../categories'
 
 function SubNav() {
   return (
@@ -18,9 +19,11 @@ function SubNav() {
           </ul>
           <h2><span>카테고리</span></h2>
           <ul>
-            <li>전체보기</li>
-            <li>~</li>
-            <li>명예의 전당</li>
+            { categories.map((a, i) => {
+              return (
+                <li>{categories[i].category}</li>
+              )
+            })}
           </ul>
         </nav>
         <footer>
