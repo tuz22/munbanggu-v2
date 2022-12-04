@@ -3,7 +3,7 @@ import './App.css';
 import SubNav from './component/SubNav.js';
 import { createContext, useState } from 'react';
 import Carousel from './component/Carousel.js';
-import { eventData, data, firstData, saleData } from './data.js';
+import data from './data.js';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
@@ -15,14 +15,14 @@ export const Context2 = createContext();
 
 function App() {
   const [hidden, setHidden] = useState('hidden');
-  const [eventItem] = useState(eventData);
   const [item] = useState(data);
-  const [firstItem] = useState(firstData);
-  const [saleItem] = useState(saleData);
   const [category] = useState(categories);
-
   const navigate = useNavigate();
 
+  const newItem = item.filter(e => e.date > 221200)
+  const bestItem = item.filter(e => e.stock < 100)
+  const firstItem = item.filter(e => e.date < 220600)
+  const saleItem = item.filter(e => e.discount !== null)
 
   return (
     <div className="App">
@@ -65,9 +65,9 @@ function App() {
                 <div className='event-list'>
                   <div className='card-box'>
                     {
-                      eventItem && eventItem.map((a, i) => {
+                      newItem && newItem.map((a, i) => {
                         return (
-                          <Card item={eventItem[i]} />
+                          <Card item={newItem[i]} />
                         )
                       })
                     }
@@ -82,9 +82,9 @@ function App() {
                 <h3 className='main-title'>요즘 잘 나가요</h3>
                 <div className='card-list'>
                   {
-                    item && item.map((a, i) => {
+                      bestItem.map((a, i) => {
                       return (
-                        <CardIndex item={item[i]} />
+                        <CardIndex item={bestItem[i]} />
                       )
                     })
                   }
@@ -124,8 +124,8 @@ function App() {
           </>
       } />
       <Route path="/goods/detail/:id" element={
-        <Context.Provider value={ {eventItem} }>
-          <Detail item={eventItem}/>
+        <Context.Provider value={ {item} }>
+          <Detail item={item}/>
         </Context.Provider>
       }></Route>
       {

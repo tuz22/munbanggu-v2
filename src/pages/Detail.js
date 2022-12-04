@@ -147,8 +147,8 @@ function Detail(props) {
 }
 
 function TabContent({tab, id}){
-  const {eventItem} = useContext(Context);
-  const itemInfo = eventItem[id];
+  const {item} = useContext(Context);
+  const itemInfo = item[id];
   // console.log('id'+id)
 
   return (
