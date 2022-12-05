@@ -20,10 +20,10 @@ let Header = styled.div`
 
 function List(props){
   const count = props.category.count;
+  const category = props.category.category;
   const item = useContext(Context2).item;
-  // console.log(item.item)
-  // console.log(useContext(Context2))
-
+  const listItem = item.filter(e => e.category == category);
+  
   return (
     <Container>
       <Header className='list-header'>
@@ -35,11 +35,17 @@ function List(props){
       </Header>
       <div className='card-list'>
       {
-        item && item.map((a, i) => {
-          return (
-            <CardIndex item={item[i]} />
-          )
-        })
+        category == '전체' 
+        ? item && item.map((a, i) => {
+            return (
+              <CardIndex item={item[i]} />
+            )
+          }) 
+        : listItem && listItem.map((a, i) => {
+            return (
+              <CardIndex item={listItem[i]} />
+            )
+          })
       }
     </div>
     </Container>
