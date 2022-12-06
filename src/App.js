@@ -10,6 +10,7 @@ import { categories } from './categories.js';
 import List from './pages/List.js';
 import Card from './component/Card.js'
 import CardIndex from './component/CardIndex.js'
+import Cart from './pages/Cart.js'
 export const Context = createContext();
 export const Context2 = createContext();
 
@@ -122,22 +123,23 @@ function App() {
               </article>
             </section>
           </>
-      } />
-      <Route path="/goods/detail/:id" element={
-        <Context.Provider value={ {item} }>
-          <Detail item={item}/>
-        </Context.Provider>
-      }></Route>
-      {
-        categories.map((a, i) => {
-          const listUrl = "goods/list/"+ i
-          return ( <Route path={listUrl} element={
-            <Context2.Provider value={ {item} }>
-              <List category={category[i]}/>
-            </Context2.Provider>
-          } />)
-        })
-      }
+        } />
+        <Route path="/goods/detail/:id" element={
+          <Context.Provider value={ {item} }>
+            <Detail item={item}/>
+          </Context.Provider>
+        }></Route>
+        {
+          categories.map((a, i) => {
+            const listUrl = "goods/list/"+ i
+            return ( <Route path={listUrl} element={
+              <Context2.Provider value={ {item} }>
+                <List category={category[i]}/>
+              </Context2.Provider>
+            } />)
+          })
+        }
+        <Route path="/cart" element={<><Cart /></>}></Route>
       </Routes>
       <footer className='footer'>
         <div className='footer-container'>
