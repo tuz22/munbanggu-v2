@@ -1,15 +1,20 @@
+import { useState } from 'react';
+
 function CardIndex(props){
   // console.log(props.item.state)
   const discount = props.item.discount;
   const price = props.item.price;
   const sale = price * (100 - discount) * 0.01;
   let detail = '/goods/detail/' + props.item.id;
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => { setIsHovering(true); }
+  const handleMouseOut = () => { setIsHovering(false); }
 
   return (
     // <div className='card-list'>
-      <div className='card-list-box'>
+      <div className='card-list-box' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <a href={detail}>
-          <img src={props.item.thumbnail1} alt="" />
+        <img src={isHovering ? props.item.thumbnail2 : props.item.thumbnail1} alt="" />
           <div className='badge'>
             <span className='discount'>
               { discount == null ? '' : discount + '% SALE' }

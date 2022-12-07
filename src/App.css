@@ -325,7 +325,7 @@
 .event-card {
   width: 312px;
   /* height: 312px; */
-  margin: 60px 40px 80px 0px;
+  margin: 60px 58px 80px 0px;
   font-size: 16px;
   text-align: center;
   display: flex;
@@ -397,6 +397,12 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+}
+.sale-list {
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
 }
 .main-content {
   position: relative;

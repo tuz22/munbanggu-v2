@@ -111,7 +111,7 @@ function App() {
               </article>
               <article className='main-content'>
                 <h3 className='main-title'>지금은 할인중</h3>
-                <div className='card-list'>
+                <div className='card-list sale-list'>
                   {
                     saleItem && saleItem.map((a, i) => {
                       return (
