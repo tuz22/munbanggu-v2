@@ -20,7 +20,7 @@ function App() {
   const [category] = useState(categories);
   const navigate = useNavigate();
 
-  const newItem = item.filter(e => e.date > 221200)
+  const newItem = item.filter(e => e.date == 221201)
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
