@@ -12,7 +12,8 @@ flex-direction: column;
 `
 
 function Cart(){
-
+  let state = useSelector((state) => state.cartItem)
+  
   return (
     <Container className='cart-container'>
       <header>
@@ -31,7 +32,6 @@ function Cart(){
               <button className='select-del-btn'>선택삭제</button>
             </div>
             <CartItem />
-            <CartItem />
           </article>
           {/* 총 상품 금액 */}
           <article className='payment-box'>
@@ -39,18 +39,18 @@ function Cart(){
               <div className="payment-result">
                 <dl className='amount'>
                   <dt className='amount-item'>총 상품금액</dt>
-                  <dd className='amount-price'>0원</dd>
+                  <dd className='amount-price'>원</dd>
                   <dt>배송비</dt>
-                  <dd>+0원</dd>
+                  <dd>+3000원</dd>
                 </dl>
                 <dl className='total'>
                   <dt>결제예상금액</dt>
-                  <dd>0원</dd>
+                  <dd>원</dd>
                 </dl>
               </div>
               <div className="order-box">
                 <button className='order-btn'>
-                  <strong>0원</strong>
+                  <strong></strong>
                   주문하기
                 </button>
               </div>
@@ -64,41 +64,45 @@ function Cart(){
 function CartItem(){
   let state = useSelector((state) => state.cartItem)
   let dispatch = useDispatch()
-  state && state.map((a, i) => {
-    return (
-      <ul className='cart-list' key={i}>
-        <li>
-          <div className='check-box'>
-            <input type='checkbox' id='@check0' />
-            <label htmlFor='@check0' />
-          </div>
-          <div className="list-box">
-            <div className="thumbnail">
-              <img src={state[i].thumbnail1} alt="" />
+  
+  return (
+    state && state.map((a, i) => {
+      console.log(state[i])
+      return (
+        <ul className='cart-list' key={i}>
+          <li>
+            <div className='check-box'>
+              <input type='checkbox' id='@check0' />
+              <label htmlFor='@check0' />
             </div>
-            <div className='list-info'>
-              <p className="list-name">
-                <a href="#">{state[i].title}</a>
-              </p>
-            </div>
-          </div>
-          <div className="cart-info">
-            <div className="quantity">
-              <input type="text" value="1"/>
-              <button className='btn-minus'>-</button>
-              <button className='btn-plus'>+</button>
-            </div>
-            <div className='price-info'>
-              <div className="price">
-                <span>{state[i].id}</span>
-                <span>{state[i].price}원</span>
+            <div className="list-box">
+              <div className="thumbnail">
+                <img src={state[i].thumbnail1} alt="" />
               </div>
-              <button className='cart-del-btn'>삭제</button>
+              <div className='list-info'>
+                <p className="list-name">
+                  <a href="#">{state[i].title}</a>
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    )
-  })
+            <div className="cart-info">
+              <div className="quantity">
+                <input type="text" value="1"/>
+                <button className='btn-minus'>-</button>
+                <button className='btn-plus'>+</button>
+              </div>
+              <div className='price-info'>
+                <div className="price">
+                  {/* <span>{state[i].id}</span> */}
+                  <span>{state[i].price}원</span>
+                </div>
+                <button className='cart-del-btn'>삭제</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      )
+    })
+  )
 }
 export default Cart

@@ -123,7 +123,7 @@ function Detail(props) {
               <footer className='buy-btn-box'>
                 <button className='detail-cart-btn' onClick={() => {
                   console.log(itemId.id, itemId.thumbnail1, itemId.title, itemId.price);
-                  // dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price }))
+                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price }))
                 ; console.log(2)}}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
               </footer>
