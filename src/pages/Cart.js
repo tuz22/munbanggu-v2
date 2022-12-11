@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 let Container = styled.div`
@@ -61,39 +62,43 @@ function Cart(){
 }
 
 function CartItem(){
-
-  return (
-    <ul className='cart-list'>
-      <li>
-        <div className='check-box'>
-          <input type='checkbox' id='@check0' />
-          <label htmlFor='@check0' />
-        </div>
-        <div className="list-box">
-          <div className="thumbnail">
-            <img src="" alt="" />
+  let state = useSelector((state) => state.cartItem)
+  let dispatch = useDispatch()
+  state && state.map((a, i) => {
+    return (
+      <ul className='cart-list' key={i}>
+        <li>
+          <div className='check-box'>
+            <input type='checkbox' id='@check0' />
+            <label htmlFor='@check0' />
           </div>
-          <div className='list-info'>
-            <p className="list-name">
-              <a href="#">아이템이름이들어가야함</a>
-            </p>
-          </div>
-        </div>
-        <div className="cart-info">
-          <div className="quantity">
-            <input type="text" value="1"/>
-            <button className='btn-minus'>-</button>
-            <button className='btn-plus'>+</button>
-          </div>
-          <div className='price-info'>
-            <div className="price">
-              <span>1000원</span>
+          <div className="list-box">
+            <div className="thumbnail">
+              <img src={state[i].thumbnail1} alt="" />
             </div>
-            <button className='cart-del-btn'>삭제</button>
+            <div className='list-info'>
+              <p className="list-name">
+                <a href="#">{state[i].title}</a>
+              </p>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  )
+          <div className="cart-info">
+            <div className="quantity">
+              <input type="text" value="1"/>
+              <button className='btn-minus'>-</button>
+              <button className='btn-plus'>+</button>
+            </div>
+            <div className='price-info'>
+              <div className="price">
+                <span>{state[i].id}</span>
+                <span>{state[i].price}원</span>
+              </div>
+              <button className='cart-del-btn'>삭제</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    )
+  })
 }
 export default Cart
