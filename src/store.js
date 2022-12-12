@@ -9,11 +9,21 @@ let cartItem = createSlice({
   reducers : {
     addItem(state, action){
       state.push(action.payload)
+    },
+    increase(state, action){
+      let cartItemId = state.findIndex((data) => { return data.id == action.payload})
+      state[cartItemId].count++
+    },
+    decrease(state, action){
+      let cartItemId = state.findIndex((data) => { return data.id == action.payload})
+      if (state[cartItemId].count > 0) {
+        state[cartItemId].count--
+      }
     }
   }
 })
 
-export let { addItem } = cartItem.actions
+export let { addItem, increase, decrease } = cartItem.actions
 export default configureStore({
   reducer : { cartItem : cartItem.reducer }
 })

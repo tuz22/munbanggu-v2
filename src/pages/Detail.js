@@ -36,6 +36,7 @@ function Detail(props) {
   const dispatch = useDispatch();
   const [cartBtn, setCartBtn] = useState('cartBtn-off');
   const navigate = useNavigate();
+  const [count, setCount] = useState(1)
 
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -108,9 +109,9 @@ function Detail(props) {
                 <h4>{itemId.title}</h4>
                 <div className="buy-options">
                   <div className="quantity">
-                    <input type="text" value="1"/>
-                    <button className='btn-minus'>-</button>
-                    <button className='btn-plus'>+</button>
+                    <input type="text" value={count}/>
+                    <button className='btn-minus' onClick={() => { count > 1 && setCount(count-1)}}>-</button>
+                    <button className='btn-plus' onClick={() => {setCount(count+1)}}>+</button>
                   </div>
                   <div className="price">
                     <span>{itemId.price}원</span>
@@ -120,12 +121,12 @@ function Detail(props) {
               <dl className="total-price">
                 <dt>총 금액</dt>
                 <dd>
-                  <span>{itemId.price}원</span>
+                  <span>{itemId.price * count}원</span>
                 </dd>
               </dl>
               <footer className='buy-btn-box'>
-                <button className='detail-cart-btn' onClick={() => {
-                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price }));
+                <button className='detail-cart-btn' onClick={() => {console.log(count)
+                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }));
                   setCartBtn('cartBtn-on')
                   }}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
