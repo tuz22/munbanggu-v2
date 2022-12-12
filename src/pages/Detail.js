@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from './../App.js';
 import { useDispatch } from 'react-redux';
@@ -34,6 +34,8 @@ function Detail(props) {
   const tabData = ['상품정보', '기본정보', '상품후기'];
   const [active, setActive] = useState('')
   const dispatch = useDispatch();
+  const [cartBtn, setCartBtn] = useState('cartBtn-off');
+  const navigate = useNavigate();
 
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -62,6 +64,7 @@ function Detail(props) {
     slideRef.current.style.transform = `translateX(-${currentSlide*5}00px)`;
     slideRef.current.style.transition = "all 1s ease";
   }, [currentSlide]);
+
   return (
     <div className='detail-container'>
       <Container>
@@ -122,14 +125,22 @@ function Detail(props) {
               </dl>
               <footer className='buy-btn-box'>
                 <button className='detail-cart-btn' onClick={() => {
-                  console.log(itemId.id, itemId.thumbnail1, itemId.title, itemId.price);
-                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price }))
-                ; console.log(2)}}>장바구니</button>
+                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price }));
+                  setCartBtn('cartBtn-on')
+                  }}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
               </footer>
             </section>
           </div>
         </header>
+        <div className={cartBtn}>
+          <div className='cartBtn-click'>
+            장바구니에 상품을 담았습니다.
+            <a Link onClick= {() => { navigate('/cart') }} className='cart-link'>
+              장바구니로 이동
+            </a>
+          </div>
+        </div>
         <section className='view-content'>
           <div className='view-tab'>
             <ul>
