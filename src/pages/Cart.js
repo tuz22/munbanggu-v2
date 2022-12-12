@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { decrease, increase } from '../store';
 
@@ -45,11 +46,10 @@ function CartItem(){
   let state = useSelector((state) => state.cartItem)
   let dispatch = useDispatch()
   const [count, setCount] = useState(0)
+  const navigate = useNavigate();
   
   return (
     state && state.map((a, i) => {
-      console.log(state[i])
-      console.log(count)
       const cartItemId = state[i].id
 
       return (
@@ -61,11 +61,15 @@ function CartItem(){
             </div>
             <div className="list-box">
               <div className="thumbnail">
-                <img src={state[i].thumbnail1} alt="" />
+                <a onClick={() => {navigate('/goods/detail/' + state[i].id)}} >
+                  <img src={state[i].thumbnail1} alt="" />
+                </a>
               </div>
               <div className='list-info'>
                 <p className="list-name">
-                  <a href="#">{state[i].title}</a>
+                <a onClick={() => {navigate('/goods/detail/' + state[i].id)}} >
+                  {state[i].title}
+                </a>
                 </p>
               </div>
             </div>
@@ -106,7 +110,7 @@ function Payment(){
                 <dt className='amount-item'>총 상품금액</dt>
                 <dd className='amount-price'>{amountPrice}원</dd>
                 <dt>배송비</dt>
-                <dd>{amountPrice == 0 ? 0 : amountPrice >= 30000 ? 0 : shipping}원</dd>
+                <dd>+{amountPrice == 0 ? 0 : amountPrice >= 30000 ? 0 : shipping}원</dd>
               </dl>
               <dl className='total'>
                 <dt>결제예상금액</dt>
