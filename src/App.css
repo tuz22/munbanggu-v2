@@ -1075,6 +1075,29 @@
   display: block;
   content: '';
 }
+.cart-item-none {
+  padding: 130px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+.cart-item-none .font {
+  font-family: hannaPro;
+  font-size: 54px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 60px;
+  text-align: center;
+}
+.cart-item-none .text {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 27px;
+}
+
 /* Cart - payment */
 .payment-box {
   position: absolute;
