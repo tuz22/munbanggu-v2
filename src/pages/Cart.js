@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import data from '../data';
-import { decrease, increase } from '../store';
+import { decrease, dropItem, increase } from '../store';
 
 let Container = styled.div`
 width: 1200px;
@@ -38,11 +38,11 @@ function Cart(){
 
 function CartItem(){
   let state = useSelector((state) => state.cartItem);
-  let dispatch = useDispatch();
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkItem = [];
   const [checkCount, setCheckCount] = useState(0);
+  
   return (
     <>
       {state.length > 0 
@@ -93,7 +93,7 @@ function CartItem(){
                           <div className="price">
                             <span>{state[i].price * state[i].count}원</span>
                           </div>
-                          <button className='cart-del-btn'>삭제</button>
+                          <button className='cart-del-btn' onClick={() => dispatch(dropItem())}>삭제</button>
                         </div>
                       </div>
                     </li>
@@ -116,16 +116,16 @@ function CartItem(){
   )
 }
 
-function Payment(){
-  let state = useSelector((state) => state.cartItem)
-
+function Payment(props){
+  const state = useSelector((state) => state.cartItem)
   return (
     <>
       {state.length > 0 
       ? state && state.map((a, i) => {
-        const amountPrice = state[i].price * state[i].count;
-        const shipping = 3000;
-        const tatoalPrice = amountPrice + shipping;
+        let amountPrice = state[i].price * state[i].count;
+        let shipping = 3000;
+        let tatoalPrice = amountPrice + shipping;
+
         return (
           <article className='payment-box'>
             <div className='box-sticky'>
