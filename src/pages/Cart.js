@@ -116,7 +116,7 @@ function CartItem(){
   )
 }
 
-function Payment(props){
+function Payment(){
   const state = useSelector((state) => state.cartItem)
   return (
     <>

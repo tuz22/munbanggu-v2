@@ -11,6 +11,8 @@ import List from './pages/List.js';
 import Card from './component/Card.js'
 import CardIndex from './component/CardIndex.js'
 import Cart from './pages/Cart.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { subChange } from './store';
 export const Context = createContext();
 export const Context2 = createContext();
 
@@ -19,11 +21,14 @@ function App() {
   const [item] = useState(data);
   const [category] = useState(categories);
   const navigate = useNavigate();
-
+  
   const newItem = item.filter(e => e.date == 221201)
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
+
+  const subHidden = useSelector((state) => state.subHidden)
+  const dispatch = useDispatch()
 
   return (
     <div className="App">
@@ -47,14 +52,11 @@ function App() {
             <li><button className='icon search-btn'>검색</button></li>
             <li className='icon cart-btn' Link onClick={() => { navigate('/cart') }}>장바구니</li>
             <li className='login-btn' Link onClick={() => { navigate('/login') }}>로그인</li>
-            <li><button onClick={() => { setHidden(''); bodyHold(1)}} className='icon menu-btn'>햄버거메뉴</button></li>
+            <li><button onClick={() => { dispatch(subChange()); console.log(hidden) }} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
       </div>
-      <div className={hidden}>
-        <SubNav />
-        <div onClick={() => {setHidden('hidden'); bodyHold(0)}} className='close-btn'>닫기</div>
-      </div>
+      <SubNav />
       {/* 메인 페이지 */}
       <Routes>
         <Route path="/" element= {

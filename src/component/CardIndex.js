@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+
+const ItemInfo = styled.div`
+  color : ${props => props.color};
+`
 
 function CardIndex(props){
   // console.log(props.item.state)
@@ -23,7 +28,7 @@ function CardIndex(props){
               { props.item.state == '' ? '' : props.item.state }
             </span>
           </div>
-          <div className='info'>
+          <ItemInfo className='info' color={isHovering ? '#2AC1BC' : 'black'}>
             <h4>{props.item.title}</h4>
             <div>
               <p>
@@ -31,7 +36,7 @@ function CardIndex(props){
                 { discount == null ? price + '원' : sale + '원' }
               </p>
             </div>
-          </div>
+          </ItemInfo>
         </a>
       </div>
     // </div>

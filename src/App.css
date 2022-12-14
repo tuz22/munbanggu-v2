@@ -11,7 +11,12 @@
   color: black;
   font-weight: 400;
 }
-
+/* 마우스 포인터 */
+.header-container nav ul li:hover, 
+.nav-container ul li:hover,
+.event-card:hover {
+  color: #2AC1BC;
+}
 /* header */
 .header-container {
   position: relative;

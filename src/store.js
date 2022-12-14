@@ -25,8 +25,31 @@ let cartItem = createSlice({
     }
   }
 })
+let subHidden = createSlice({
+  name : 'subHidden',
+  initialState : 'hidden',
+  reducers : {
+    subChange(state){
+      const body = document.querySelector('body').style;
+      if (state == 'hidden') {
+        state = ''
+        body.overflow = 'hidden';
+        body.height = '100%';
+      } else {
+        state = 'hidden'
+        body.overflow = '';
+        body.height = '';
+      }
+      return state
+    }
+  }
+})
 
 export let { addItem, dropItem, increase, decrease } = cartItem.actions
+export let { subChange } = subHidden.actions
 export default configureStore({
-  reducer : { cartItem : cartItem.reducer }
+  reducer : { 
+    cartItem : cartItem.reducer,
+    subHidden : subHidden.reducer
+  }
 })
