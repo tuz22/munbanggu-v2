@@ -8,7 +8,6 @@ import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
 import List from './pages/List.js';
-import Card from './component/Card.js'
 import CardIndex from './component/CardIndex.js'
 import Cart from './pages/Cart.js'
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +16,6 @@ export const Context = createContext();
 export const Context2 = createContext();
 
 function App() {
-  const [hidden, setHidden] = useState('hidden');
   const [item] = useState(data);
   const [category] = useState(categories);
   const navigate = useNavigate();
@@ -52,7 +50,7 @@ function App() {
             <li><button className='icon search-btn'>검색</button></li>
             <li className='icon cart-btn' Link onClick={() => { navigate('/cart') }}>장바구니</li>
             <li className='login-btn' Link onClick={() => { navigate('/login') }}>로그인</li>
-            <li><button onClick={() => { dispatch(subChange()); console.log(hidden) }} className='icon menu-btn'>햄버거메뉴</button></li>
+            <li><button onClick={() => { dispatch(subChange());}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
       </div>
@@ -70,7 +68,7 @@ function App() {
                     {
                       newItem && newItem.map((a, i) => {
                         return (
-                          <Card item={newItem[i]} />
+                          <CardIndex item={newItem[i]} />
                         )
                       })
                     }
@@ -100,7 +98,7 @@ function App() {
                     {
                       firstItem && firstItem.map((a, i) => {
                         return (
-                          <Card item={firstItem[i]} />
+                          <CardIndex item={firstItem[i]} />
                         )
                       })
                     }
@@ -178,17 +176,6 @@ function App() {
       </footer>
     </div>
   );
-}
-
-function bodyHold(state){
-  const body = document.querySelector('body').style;
-  if (state == 1) {
-    body.overflow = 'hidden';
-    body.height = '100%';
-  } else {
-    body.overflow = '';
-    body.height = '';
-  }
 }
 
 export default App;

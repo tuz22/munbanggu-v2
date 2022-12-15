@@ -4,6 +4,9 @@ import styled from 'styled-components';
 const ItemInfo = styled.div`
   color : ${props => props.color};
 `
+const BadgeState = styled.span`
+  color : ${props => props.color};
+`
 
 function Card(props){
   let detail = '/goods/detail/' + props.item.id;
@@ -17,7 +20,6 @@ function Card(props){
       <div className='badge'>
         { props.item.state == '' ? '' : props.item.state }
       </div>
-      {/* setIsHovering == true ? '#2AC1BC' : 'black' */}
       <ItemInfo className='info' color={isHovering ? '#2AC1BC' : 'black'}>
         <h4>{props.item.title}</h4>
         <p>{props.item.price}원</p>

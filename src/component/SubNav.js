@@ -6,7 +6,6 @@ import { subChange } from '../store';
 
 function SubNav() {
   const navigate = useNavigate();
-  const [hidden, setHidden] = useState('');
   const subHidden = useSelector((state) => state.subHidden)
   const dispatch = useDispatch()
   

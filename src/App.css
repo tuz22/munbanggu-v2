@@ -327,20 +327,19 @@
   overflow: hidden;
   /* justify-content: center; */
 }
-.event-card {
+.card-box .card-list-box {
   width: 312px;
-  /* height: 312px; */
   margin: 60px 58px 80px 0px;
   font-size: 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
-.event-card a {
+.card-box .card-list-box a {
   width: 312px;
   height: 312px;
 }
-.event-card img {
+.card-box .card-list-box img {
   width: 100%;
   height: 100%;
 }
