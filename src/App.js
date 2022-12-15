@@ -12,6 +12,8 @@ import CardIndex from './component/CardIndex.js'
 import Cart from './pages/Cart.js'
 import { useDispatch, useSelector } from 'react-redux';
 import { subChange } from './store';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 export const Context = createContext();
 export const Context2 = createContext();
 
@@ -19,19 +21,39 @@ function App() {
   const [item] = useState(data);
   const [category] = useState(categories);
   const navigate = useNavigate();
-  
   const newItem = item.filter(e => e.date == 221201)
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
-
   const subHidden = useSelector((state) => state.subHidden)
   const dispatch = useDispatch()
 
+  const scrollRef = useRef(null);
+  const [bg, setBg] = useState('bgOff')
+  const handleScroll = () => {
+    console.log('스크롤중...');
+
+    if (window.scrollY == 0 ){
+      setBg('bgOff')
+    } else {
+      setBg('bgOn')
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      window.addEventListener('scroll', handleScroll);
+    }, 100);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="App">
+    <div className="App" ref={scrollRef}>
       <title>배민문방구</title>
-      <div className='header-container bgOff'>
+      <div className= {`${bg} header-container` }>
         <header className=''>
             <button className='logo logo-btn' Link onClick={() => { navigate('/') }}>로고</button>
           <nav>
