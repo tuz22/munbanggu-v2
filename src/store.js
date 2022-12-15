@@ -44,12 +44,24 @@ let subHidden = createSlice({
     }
   }
 })
+let checkCount = createSlice({
+  name : 'checkCount',
+  initialState : 0,
+  reducers : {
+    checkToggle(state){
+      { state == 0 ? state = 1 : state = 0 }
+      return state
+    }
+  }
+})
 
 export let { addItem, dropItem, increase, decrease } = cartItem.actions
 export let { subChange } = subHidden.actions
+export let { checkToggle } = checkCount.actions
 export default configureStore({
   reducer : { 
     cartItem : cartItem.reducer,
-    subHidden : subHidden.reducer
+    subHidden : subHidden.reducer,
+    checkCount : checkCount.reducer
   }
 })

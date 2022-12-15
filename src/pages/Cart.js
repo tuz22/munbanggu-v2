@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import data from '../data';
-import { decrease, dropItem, increase } from '../store';
+import { checkToggle, decrease, dropItem, increase } from '../store';
 
-let Container = styled.div`
-width: 1200px;
-height: 100%;
-margin: 0px auto;
-padding: 80px 0px 200px;
-font-family: sans-serif;
-display: flex;
-flex-direction: column;
+const Container = styled.div`
+  width: 1200px;
+  height: 100%;
+  margin: 0px auto;
+  padding: 80px 0px 200px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+`
+const CartBtn = styled.button`
+  color : ${props => props.color};
+  background : ${props => props.color == '#CCC' ? '#EEE' : '#2AC1BC'};
+  border-color : ${props => props.color == '#CCC' ? '#EEE' : '#2AC1BC'};
 `
 
 function Cart(){
-  
+
   return (
     <Container className='cart-container'>
       <header>
@@ -38,10 +43,10 @@ function Cart(){
 
 function CartItem(){
   let state = useSelector((state) => state.cartItem);
+  const checkCount = useSelector((state) => state.checkCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkItem = [];
-  const [checkCount, setCheckCount] = useState(0);
   
   return (
     <>
@@ -50,7 +55,7 @@ function CartItem(){
           <div className='cart-header'>
             <div className='check-box'>
               {/* <input type='checkbox' id='@checkAll' /> */}
-              <input type='checkbox' id='@checkAll' onClick={() => {checkCount == 0 ? setCheckCount(-1) : setCheckCount(0) }} checked={checkCount == 0 ? true : false}/>
+              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkToggle())}} checked={checkCount == 0 ? true : false}/>
               <label htmlFor='@checkAll'>전체선택</label>
             </div>
             <button className='select-del-btn'>선택삭제</button>
@@ -59,14 +64,12 @@ function CartItem(){
               const cartItemId = state[i].id
               const checkId = '@check' + i
               checkItem.push(i)
-              console.log(checkItem)
-              console.log(checkCount)
               return (
                 <div>
                   <ul className='cart-list' key={i}>
                     <li>
                       <div className='check-box'>
-                        <input type='checkbox' id={checkId} onClick={() => {checkCount == 0 ? setCheckCount(-1) : setCheckCount(0)}} checked={checkCount == 0 ? true : false}/>
+                        <input type='checkbox' id={checkId} onClick={() => {dispatch(checkToggle())}} checked={checkCount == 0 ? true : false}/>
                         <label htmlFor={checkId} />
                       </div>
                       <div className="list-box">
@@ -91,7 +94,7 @@ function CartItem(){
                         </div>
                         <div className='price-info'>
                           <div className="price">
-                            <span>{state[i].price * state[i].count}원</span>
+                            <span>{(state[i].price * state[i].count).toLocaleString()}원</span>
                           </div>
                           <button className='cart-del-btn' onClick={() => dispatch(dropItem())}>삭제</button>
                         </div>
@@ -118,6 +121,9 @@ function CartItem(){
 
 function Payment(){
   const state = useSelector((state) => state.cartItem)
+  const checkCount = useSelector((state) => state.checkCount)
+  const dispatch = useDispatch();
+
   return (
     <>
       {state.length > 0 
@@ -132,20 +138,20 @@ function Payment(){
               <div className="payment-result">
                 <dl className='amount'>
                   <dt className='amount-item'>총 상품금액</dt>
-                  <dd className='amount-price'>{amountPrice}원</dd>
+                  <dd className='amount-price'>{amountPrice.toLocaleString()}원</dd>
                   <dt>배송비</dt>
-                  <dd>+{amountPrice == 0 ? 0 : amountPrice >= 30000 ? 0 : shipping}원</dd>
+                  <dd>+{amountPrice == 0 ? 0 : amountPrice >= 30000 ? 0 : shipping.toLocaleString()}원</dd>
                 </dl>
                 <dl className='total'>
                   <dt>결제예상금액</dt>
-                  <dd>{amountPrice == 0 ? 0 : amountPrice < 30000 ? tatoalPrice : tatoalPrice - shipping}원</dd>
+                  <dd>{amountPrice == 0 ? 0 : amountPrice < 30000 ? tatoalPrice.toLocaleString() : (tatoalPrice - shipping).toLocaleString()}원</dd>
                 </dl>
               </div>
               <div className="order-box">
-                <button className='order-btn'>
+                <CartBtn className='order-btn' color={checkCount == 0 ? 'white' : '#CCC'}>
                   <strong></strong>
                   주문하기
-                </button>
+                </CartBtn>
               </div>
             </div>
           </article>
