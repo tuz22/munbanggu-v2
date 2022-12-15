@@ -43,6 +43,7 @@ function Detail(props) {
   const [active, setActive] = useState('')
   const dispatch = useDispatch();
   const [cartBtn, setCartBtn] = useState('cartBtn-off');
+  // const cartItem = useSelector((state) => state.cartItem);
   const navigate = useNavigate();
   const [count, setCount] = useState(1)
 
@@ -146,7 +147,7 @@ function Detail(props) {
                 </dd>
               </dl>
               <footer className={price == 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
-                <button className='detail-cart-btn' onClick={ () => {console.log(count)
+                <button className='detail-cart-btn' onClick={ () => {
                   dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }));
                   setCartBtn('cartBtn-on')
                   }}>장바구니</button>

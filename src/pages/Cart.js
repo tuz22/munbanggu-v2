@@ -47,7 +47,6 @@ function CartItem(){
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkItem = [];
-  
   return (
     <>
       {state.length > 0 

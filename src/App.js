@@ -71,7 +71,7 @@ function App() {
           <ul>
             <li><button className='icon search-btn'>검색</button></li>
             <li className='icon cart-btn' Link onClick={() => { navigate('/cart') }}>장바구니</li>
-            <li className='login-btn' Link onClick={() => { navigate('/login') }}>로그인</li>
+            <li className='login-btn'>로그인</li>
             <li><button onClick={() => { dispatch(subChange());}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
         </header>
