@@ -94,7 +94,7 @@ const data = [
     id : 7,
     title : "배달이친구들 케이블타이 2종",
     category : "리빙",
-    price : "SOLDE OUT",
+    price : "SOLD OUT",
     discount : null,
     state : "",
     stock : 10,

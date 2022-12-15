@@ -5,7 +5,7 @@ import { Context } from './../App.js';
 import { useDispatch } from 'react-redux';
 import { addItem } from './../store.js';
 
-let Container = styled.div`
+const Container = styled.div`
   width : 1200px;
   height : 100%;
   background : none;
@@ -14,22 +14,30 @@ let Container = styled.div`
   padding : 80px 0 200px 0;
   flex-diraction : column;
 `
-let ViewBox = styled.div`
+const ViewBox = styled.div`
   padding : 80px 0 0 0;
 `
-let ItemInfo = styled.div`
+const ItemInfo = styled.div`
   display : flex;
   flex-direction: column;
   justify-content: center;
 `
-let BasicGuid = styled.div`
+const BasicGuid = styled.div`
   font-size : 14px;
   font-family: minsansVF;
+`
+const BadgeState = styled.span`
+  color : ${props => props.color};
 `
 
 function Detail(props) {
   const {id} = useParams()
   const itemId = props.item.find((a) => a.id == id)
+  const discount = itemId.discount;
+  const price = itemId.price;
+  const PRICE = price.toLocaleString();
+  const sale = itemId.price * (100 - discount) * 0.01;
+  const SALE = sale.toLocaleString();
   const [tab, setTab] = useState(0)
   const tabData = ['상품정보', '기본정보', '상품후기'];
   const [active, setActive] = useState('')
@@ -73,9 +81,20 @@ function Detail(props) {
         {/* <h4>{itemId.title}</h4> */}
         <header className='detail-header'>
           <div className='item-info'>
-            <span className='badge'>{itemId.state}</span>
+            <div className='badge'>
+              <span className='discount'>
+                { discount == null ? '' : discount + '% SALE' }
+              </span>
+              <BadgeState className='badge-name' color={itemId.state == 'NEW' ? '#2AC1BC' : '#6236FF'}>
+                { itemId.state == '' ? '' : itemId.state }
+              </BadgeState>
+            </div>
             <h3 className='name'>{itemId.title}</h3>
-            <p className='price'>{itemId.price}원</p>
+            {/* <p className='price'>{itemId.price}원</p> */}
+            <p>
+              <strike className='sale-price'>{ discount == null ? '' : PRICE + ' '}</strike>
+              { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
+            </p>
           </div>
           <div className='item-preview'>
             <div className='carousel'>
@@ -114,18 +133,20 @@ function Detail(props) {
                     <button className='btn-plus' onClick={() => {setCount(count+1)}}>+</button>
                   </div>
                   <div className="price">
-                    <span>{itemId.price}원</span>
+                    <span>
+                      { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
+                    </span>
                   </div>
                 </div>
               </div>
               <dl className="total-price">
                 <dt>총 금액</dt>
                 <dd>
-                  <span>{itemId.price * count}원</span>
+                  <span>{ (price == 'SOLD OUT') ? price : discount == null ? (price * count).toLocaleString()+'원' : (sale * count).toLocaleString() +'원'}</span>
                 </dd>
               </dl>
-              <footer className='buy-btn-box'>
-                <button className='detail-cart-btn' onClick={() => {console.log(count)
+              <footer className={price == 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
+                <button className='detail-cart-btn' onClick={ () => {console.log(count)
                   dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }));
                   setCartBtn('cartBtn-on')
                   }}>장바구니</button>
