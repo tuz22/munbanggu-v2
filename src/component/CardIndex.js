@@ -14,6 +14,7 @@ function CardIndex(props){
   const PRICE = price.toLocaleString();
   const sale = price * (100 - discount) * 0.01;
   const SALE = sale.toLocaleString();
+  const state = props.item.state;
   let detail = '/goods/detail/' + props.item.id;
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => { setIsHovering(true); }
@@ -27,8 +28,8 @@ function CardIndex(props){
           <span className='discount'>
             { discount == null ? '' : discount + '% SALE' }
           </span>
-          <BadgeState className='badge-name' color={props.item.state == 'NEW' ? '#2AC1BC' : '#6236FF'}>
-            { props.item.state == '' ? '' : props.item.state }
+          <BadgeState className='badge-name' color={state == 'NEW' ? '#2AC1BC' : state == 'GREEN' ? '#0c952a' : '#6236FF'}>
+            { state == '' ? '' : state }
           </BadgeState>
         </div>
         <ItemInfo className='info' color={isHovering ? '#2AC1BC' : 'black'}>
