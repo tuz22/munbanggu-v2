@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from './../App.js';
-import { useDispatch } from 'react-redux';
-import { addItem } from './../store.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, increase } from './../store.js';
 
 const Container = styled.div`
   width : 1200px;
@@ -43,9 +43,11 @@ function Detail(props) {
   const [active, setActive] = useState('')
   const dispatch = useDispatch();
   const [cartBtn, setCartBtn] = useState('cartBtn-off');
-  // const cartItem = useSelector((state) => state.cartItem);
   const navigate = useNavigate();
   const [count, setCount] = useState(1)
+
+  const cartItem = useSelector((state) => state.cartItem);
+  const dupVal = cartItem.findIndex((data) => data.id == itemId.id);
 
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -148,8 +150,10 @@ function Detail(props) {
               </dl>
               <footer className={price == 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
                 <button className='detail-cart-btn' onClick={ () => {
-                  dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }));
-                  setCartBtn('cartBtn-on')
+                    dupVal == 0
+                    ? dispatch(increase(itemId.id))
+                    : dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }));
+                      setCartBtn('cartBtn-on')
                   }}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
               </footer>

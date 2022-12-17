@@ -21,8 +21,8 @@ function SubNav() {
           <ul>
             <li Link onClick={() => { navigate('/goods/list/0'); dispatch(subChange()) }}>전체보기</li>
             <li Link onClick={() => { navigate('/goods/detail/6'); dispatch(subChange()) }}>목장갑은 뚝딱 만들어지지 않았다</li>
-            <li Link onClick={() => { navigate('/goods/list/0'); dispatch(subChange()) }}>나의 첫 배민문방구</li>
-            <li Link onClick={() => { navigate('/goods/list/0'); dispatch(subChange()) }}>[단독] 베스트셀러 출생의 비밀</li>
+            <li Link onClick={() => { navigate('/goods/detail/12'); dispatch(subChange()) }}>나의 첫 배민문방구</li>
+            <li Link onClick={() => { navigate('/goods/detail/3'); dispatch(subChange()) }}>[단독] 베스트셀러 출생의 비밀</li>
           </ul>
           <h2><span>카테고리</span></h2>
           <ul>
