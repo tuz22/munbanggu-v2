@@ -34,19 +34,29 @@ function Carousel(){
     <div className='carousel'>
       <div className='carousel-container' ref={slideRef}>
         <div className='carousel-box'>
+          <a href='/goods/detail/0'>
             <img src="./../assets/img/banner1.jpg" draggable="false" alt="메인베너1" />
+          </a>
         </div>
         <div className='carousel-box'>
-          <img src="./../assets/img/banner2.jpg" draggable="false" alt="메인베너2" />
+          <a href='/goods/detail/1'>
+            <img src="./../assets/img/banner2.jpg" draggable="false" alt="메인베너2" />
+          </a>
         </div>
         <div className='carousel-box'>
-          <img src="./../assets/img/banner3.jpg" draggable="false" alt="메인베너3" />
+          <a href='/goods/detail/4'>
+            <img src="./../assets/img/banner3.jpg" draggable="false" alt="메인베너3" />
+          </a>
         </div>
         <div className='carousel-box'>
-          <img src="./../assets/img/banner4.jpg" draggable="false" alt="메인베너4" />
+          <a href='/goods/detail/6'>
+            <img src="./../assets/img/banner4.jpg" draggable="false" alt="메인베너4" />
+          </a>
         </div>
         <div className='carousel-box'>
-          <img src="./../assets/img/banner5.png" draggable="false" alt="메인베너5" />
+          <a href='/goods/detail/12'>
+            <img src="./../assets/img/banner5.png" draggable="false" alt="메인베너5" />
+          </a>
         </div>
       </div>
       <div className='carousel-btn'>
