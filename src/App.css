@@ -713,7 +713,8 @@
   visibility: visible;
 }
 .cartBtn-off {
-  visibility: hidden;
+  transition: all 200ms ease-in 0s;
+  /* visibility: hidden; */
   opacity: 0;
 }
 .cartBtn-click {
