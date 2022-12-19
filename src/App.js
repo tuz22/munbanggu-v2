@@ -4,7 +4,7 @@ import SubNav from './component/SubNav.js';
 import { createContext, useState } from 'react';
 import Carousel from './component/Carousel.js';
 import data from './data.js';
-import { useNavigate, Routes, Route, Link } from 'react-router-dom';
+import { useNavigate, Routes, Route, Link, Navigate } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
 import List from './pages/List.js';
@@ -25,13 +25,12 @@ function App() {
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
-  const subHidden = useSelector((state) => state.subHidden)
+  // const subHidden = useSelector((state) => state.subHidden)
   const dispatch = useDispatch()
 
   const scrollRef = useRef(null);
   const [bg, setBg] = useState('bgOff')
   const handleScroll = () => {
-    console.log('스크롤중...');
 
     if (window.scrollY == 0 ){
       setBg('bgOff')
@@ -55,22 +54,26 @@ function App() {
       <title>배민문방구</title>
       <div className= {`${bg} header-container` }>
         <header className=''>
-            <button className='logo logo-btn' Link onClick={() => { navigate('/') }}>로고</button>
+          <Link to='/'>
+            <button className='logo logo-btn'>로고</button>
+          </Link>
           <nav>
             <ul>
-              <li Link onClick={() => { navigate('/goods/list/0') }}>전체</li>
-              <li Link onClick={() => { navigate('/goods/list/1') }}>문구</li>
-              <li Link onClick={() => { navigate('/goods/list/2') }}>리빙</li>
-              <li Link onClick={() => { navigate('/goods/list/3') }}>책/메거진F</li>
-              <li Link onClick={() => { navigate('/goods/list/4') }}>배민그린</li>
-              <li Link onClick={() => { navigate('/goods/list/5') }}>배달이친구들</li>
-              <li Link onClick={() => { navigate('/goods/list/6') }}>콜라보레이션</li>
-              <li Link onClick={() => { navigate('/goods/list/7') }}>명예의 전당</li>
+              <li><Link to='/goods/list/0'>전체</Link></li>
+              <li><Link to='/goods/list/1'>문구</Link></li>
+              <li><Link to='/goods/list/2'>리빙</Link></li>
+              <li><Link to='/goods/list/3'>책/메거진F</Link></li>
+              <li><Link to='/goods/list/4'>배민그린</Link></li>
+              <li><Link to='/goods/list/5'>배달이친구들</Link></li>
+              <li><Link to='/goods/list/6'>콜라보레이션</Link></li>
+              <li><Link to='/goods/list/7'>명예의 전당</Link></li>
             </ul>
           </nav>
           <ul>
             <li><button className='icon search-btn'>검색</button></li>
-            <li className='icon cart-btn' Link onClick={() => { navigate('/cart') }}>장바구니</li>
+            <li>
+              <Link to='/cart' className='icon cart-btn'>장바구니</Link>
+            </li>
             <li className='login-btn'>로그인</li>
             <li><button onClick={() => { dispatch(subChange());}} className='icon menu-btn'>햄버거메뉴</button></li>
           </ul>
@@ -88,9 +91,9 @@ function App() {
                 <div className='event-list'>
                   <div className='card-box'>
                     {
-                      newItem && newItem.map((a, i) => {
+                      newItem && newItem.map((data) => {
                         return (
-                          <CardIndex item={newItem[i]} />
+                          <CardIndex key={data.id} item={data} />
                         )
                       })
                     }
@@ -105,9 +108,9 @@ function App() {
                 <h3 className='main-title'>요즘 잘 나가요</h3>
                 <div className='card-list'>
                   {
-                      bestItem.map((a, i) => {
+                      bestItem && bestItem.map((data) => {
                       return (
-                        <CardIndex item={bestItem[i]} />
+                        <CardIndex key={data.id} item={data} />
                       )
                     })
                   }
@@ -118,9 +121,9 @@ function App() {
                 <div className='event-list'>
                   <div className='card-box'>
                     {
-                      firstItem && firstItem.map((a, i) => {
+                      firstItem && firstItem.map((data) => {
                         return (
-                          <CardIndex item={firstItem[i]} />
+                          <CardIndex key={data.id} item={data} />
                         )
                       })
                     }
@@ -135,9 +138,9 @@ function App() {
                 <h3 className='main-title'>지금은 할인중</h3>
                 <div className='card-list sale-list'>
                   {
-                    saleItem && saleItem.map((a, i) => {
+                    saleItem && saleItem.map((data) => {
                       return (
-                          <CardIndex item={saleItem[i]} />
+                          <CardIndex key={data.id} item={data} />
                       )
                     })
                   }
@@ -161,7 +164,7 @@ function App() {
             } />)
           })
         }
-        <Route path="/cart" element={<><Cart /></>}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
       <footer className='footer'>
         <div className='footer-container'>

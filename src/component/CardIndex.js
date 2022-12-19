@@ -19,7 +19,7 @@ function CardIndex(props){
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => { setIsHovering(true); }
   const handleMouseOut = () => { setIsHovering(false); }
-
+  
   return (
     <div className='card-list-box' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <a href={detail}>
@@ -28,11 +28,11 @@ function CardIndex(props){
           <span className='discount'>
             { discount == null ? '' : discount + '% SALE' }
           </span>
-          <BadgeState className='badge-name' color={state == 'NEW' ? '#2AC1BC' : state == 'GREEN' ? '#0c952a' : '#6236FF'}>
+          <BadgeState className='badge-name' $color={state == 'NEW' ? '#2AC1BC' : state == 'GREEN' ? '#0c952a' : '#6236FF'}>
             { state == '' ? '' : state }
           </BadgeState>
         </div>
-        <ItemInfo className='info' color={isHovering ? '#2AC1BC' : 'black'}>
+        <ItemInfo className='info' $color={isHovering ? '#2AC1BC' : 'black'}>
           <h4>{props.item.title}</h4>
           <div>
             <p>

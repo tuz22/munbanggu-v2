@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from './../App.js';
 import { useDispatch, useSelector } from 'react-redux';
@@ -101,7 +101,6 @@ function Detail(props) {
               </BadgeState>
             </div>
             <h3 className='name'>{itemId.title}</h3>
-            {/* <p className='price'>{itemId.price}원</p> */}
             <p>
               <strike className='sale-price'>{ discount == null ? '' : PRICE + ' '}</strike>
               { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
@@ -171,9 +170,7 @@ function Detail(props) {
         <div className={alertCart == true ? 'cartBtn-on' : 'cartBtn-off'}>
           <div className='cartBtn-click'>
             장바구니에 상품을 담았습니다.
-            <a Link onClick= {() => { navigate('/cart') }} className='cart-link'>
-              장바구니로 이동
-            </a>
+            <Link to='/cart' className='cart-link'>장바구니로 이동</Link>
           </div>
         </div>
         <section className='view-content'>
@@ -183,7 +180,7 @@ function Detail(props) {
                 tabData && tabData.map((a, i) => {
                   return (
                     <li>
-                      <a className={i == active ? 'active' : ''} value={i} Link onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
+                      <a className={i == active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
                     </li>
                   )
                 })

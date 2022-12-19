@@ -53,7 +53,6 @@ function CartItem(){
       ? <div>
           <div className='cart-header'>
             <div className='check-box'>
-              {/* <input type='checkbox' id='@checkAll' /> */}
               <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkToggle())}} checked={checkCount == 0 ? true : false}/>
               <label htmlFor='@checkAll'>전체선택</label>
             </div>
