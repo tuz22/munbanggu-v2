@@ -4,7 +4,7 @@ import SubNav from './component/SubNav.js';
 import { createContext, useState } from 'react';
 import Carousel from './component/Carousel.js';
 import data from './data.js';
-import { useNavigate, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Detail from './pages/Detail.js';
 import { categories } from './categories.js';
 import List from './pages/List.js';
@@ -20,12 +20,10 @@ export const Context2 = createContext();
 function App() {
   const [item] = useState(data);
   const [category] = useState(categories);
-  const navigate = useNavigate();
   const newItem = item.filter(e => e.date == 221201)
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
-  // const subHidden = useSelector((state) => state.subHidden)
   const dispatch = useDispatch()
 
   const scrollRef = useRef(null);
@@ -59,14 +57,27 @@ function App() {
           </Link>
           <nav>
             <ul>
-              <li><Link to='/goods/list/0'>전체</Link></li>
-              <li><Link to='/goods/list/1'>문구</Link></li>
-              <li><Link to='/goods/list/2'>리빙</Link></li>
-              <li><Link to='/goods/list/3'>책/메거진F</Link></li>
-              <li><Link to='/goods/list/4'>배민그린</Link></li>
-              <li><Link to='/goods/list/5'>배달이친구들</Link></li>
-              <li><Link to='/goods/list/6'>콜라보레이션</Link></li>
-              <li><Link to='/goods/list/7'>명예의 전당</Link></li>
+              <Link to='/goods/list/0'>
+                <li>전체</li>
+              </Link>
+              <Link to='/goods/list/1'>
+                <li>문구</li>
+              </Link>
+              <Link to='/goods/list/2'>
+                <li>리빙</li>
+              </Link>
+              <Link to='/goods/list/3'>
+                <li>책/메거진F</li>
+              </Link>
+              <Link to='/goods/list/4'>
+                <li>배민그린</li>
+              </Link>
+              <Link to='/goods/list/5'>
+                <li>배달이친구들</li>
+              </Link>
+              <Link to='/goods/list/6'>
+                <li>콜라보레이션</li>
+              </Link>
             </ul>
           </nav>
           <ul>

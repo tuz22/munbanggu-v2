@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { categories } from '../categories'
 import { subChange } from '../store';
 
 function SubNav() {
-  const navigate = useNavigate();
   const subHidden = useSelector((state) => state.subHidden)
   const dispatch = useDispatch()
   
@@ -19,27 +18,27 @@ function SubNav() {
         <nav>
           <h2>테마</h2>
           <ul>
-            <li onClick={() => dispatch(subChange()) }>
-              <Link to='/goods/list/0'>전체보기</Link>
-            </li>
-            <li onClick={() => dispatch(subChange()) }>
-              <Link to='/goods/detail/6'>목장갑은 뚝딱 만들어지지 않았다</Link>
-            </li>
-            <li onClick={() => dispatch(subChange()) }>
-              <Link to='/goods/detail/12'>나의 첫 배민문방구</Link>
-            </li>
-            <li onClick={() => dispatch(subChange()) }>
-              <Link to='/goods/detail/3'>[단독] 베스트셀러 출생의 비밀</Link>
-            </li>
+            <Link to='/goods/list/0'>
+              <li onClick={() => dispatch(subChange()) }>전체보기</li>
+            </Link>
+            <Link to='/goods/detail/6'>
+              <li onClick={() => dispatch(subChange()) }>목장갑은 뚝딱 만들어지지 않았다</li>
+            </Link>
+            <Link to='/goods/detail/12'>
+              <li onClick={() => dispatch(subChange()) }>나의 첫 배민문방구</li>
+            </Link>
+            <Link to='/goods/detail/3'>
+              <li onClick={() => dispatch(subChange()) }>[단독] 베스트셀러 출생의 비밀</li>
+            </Link>
           </ul>
           <h2><span>카테고리</span></h2>
           <ul>
             { categories.map((data) => {
               let link = '/goods/list/' + data.id
               return (
-                <li key={data.id} onClick={() => dispatch(subChange()) }>
-                  <Link to={link}>{data.category}</Link>
-                </li>
+                <Link to={link}>
+                  <li key={data.id} onClick={() => dispatch(subChange()) }>{data.category}</li>
+                </Link>
               )
             })}
           </ul>
