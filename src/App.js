@@ -11,7 +11,7 @@ import List from './pages/List.js';
 import CardIndex from './component/CardIndex.js'
 import Cart from './pages/Cart.js'
 import { useDispatch, useSelector } from 'react-redux';
-import { subChange } from './store';
+import { subChange } from './store/subSlice';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 export const Context = createContext();

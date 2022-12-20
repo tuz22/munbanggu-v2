@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from './../App.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, increase } from './../store.js';
+import { addItem, increase } from './../store/cartSlice';
 
 const Container = styled.div`
   width : 1200px;

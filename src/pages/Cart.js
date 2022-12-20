@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import data from '../data';
-import { checkToggle, decrease, dropItem, increase } from '../store';
+import { decrease, increase, dropItem } from './../store/cartSlice';
+import { checkToggle } from './../store/checkSlice';
 
 const Container = styled.div`
   width: 1200px;
