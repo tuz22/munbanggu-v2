@@ -23,12 +23,4 @@ const store = configureStore({
   reducer : persistedReducer
 })
 
-// const store = configureStore({
-//   reducer: {
-//     cartItem : cartSlice.reducer,
-//     subHidden : subSlice.reducer,
-//     checkCount : checkSlice.reducer
-//   }
-// })
-
 export default store;

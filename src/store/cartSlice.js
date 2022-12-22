@@ -25,45 +25,7 @@ const cartSlice = createSlice({
     }
   }
 })
-// let subHidden = createSlice({
-//   name : 'subHidden',
-//   initialState : 'hidden',
-//   reducers : {
-//     subChange(state){
-//       const body = document.querySelector('body').style;
-//       if (state == 'hidden') {
-//         state = ''
-//         body.overflow = 'hidden';
-//         body.height = '100%';
-//       } else {
-//         state = 'hidden'
-//         body.overflow = '';
-//         body.height = '';
-//       }
-//       return state
-//     }
-//   }
-// })
-// let checkCount = createSlice({
-//   name : 'checkCount',
-//   initialState : 0,
-//   reducers : {
-//     checkToggle(state){
-//       { state == 0 ? state = 1 : state = 0 }
-//       return state
-//     }
-//   }
-// })
 
 export const { addItem, dropItem, increase, decrease } = cartSlice.actions
-// export let { subChange } = subHidden.actions
-// export let { checkToggle } = checkCount.actions
-// export default configureStore({
-//   reducer : { 
-//     cartItem : cartItem.reducer,
-//     subHidden : subHidden.reducer,
-//     checkCount : checkCount.reducer
-//   }
-// })
 
 export default cartSlice;
