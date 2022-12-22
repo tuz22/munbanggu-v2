@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -121,65 +121,50 @@ function CartItem(){
 function Payment(){
   const state = useSelector((state) => state.cartItem)
   const checkCount = useSelector((state) => state.checkCount)
-  const dispatch = useDispatch();
+  const shipping = 3000;
+  const SHIPPING = shipping.toLocaleString()
+  let [sumPrice, setSumPrice] = useState(0);
+  let priceArr = [];
 
+  if (state.length > 0) {
+    state && state.map((a, i) => {
+      let amountPrice = (state[i].price * state[i].count)
+      priceArr.push(amountPrice)
+    })
+  } else {
+    sumPrice = 0;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      sumPrice = priceArr.reduce((sum, itemPrice) => sum + itemPrice)
+      setSumPrice(sumPrice)
+    }, 100);
+  })
+  
   return (
-    <>
-      {state.length > 0 
-      ? state && state.map((a, i) => {
-        let amountPrice = state[i].price * state[i].count;
-        let shipping = 3000;
-        let tatoalPrice = amountPrice + shipping;
-
-        return (
-          <article className='payment-box'>
-            <div className='box-sticky'>
-              <div className="payment-result">
-                <dl className='amount'>
-                  <dt className='amount-item'>총 상품금액</dt>
-                  <dd className='amount-price'>{amountPrice.toLocaleString()}원</dd>
-                  <dt>배송비</dt>
-                  <dd>+{amountPrice == 0 ? 0 : amountPrice >= 30000 ? 0 : shipping.toLocaleString()}원</dd>
-                </dl>
-                <dl className='total'>
-                  <dt>결제예상금액</dt>
-                  <dd>{amountPrice == 0 ? 0 : amountPrice < 30000 ? tatoalPrice.toLocaleString() : (tatoalPrice - shipping).toLocaleString()}원</dd>
-                </dl>
-              </div>
-              <div className="order-box">
-                <CartBtn className='order-btn' color={checkCount == 0 ? 'white' : '#CCC'}>
-                  <strong></strong>
-                  주문하기
-                </CartBtn>
-              </div>
-            </div>
-          </article>
-        )
-      }) 
-      : <article className='payment-box'>
-          <div className='box-sticky'>
-            <div className="payment-result">
-              <dl className='amount'>
-                <dt className='amount-item'>총 상품금액</dt>
-                <dd className='amount-price'>0원</dd>
-                <dt>배송비</dt>
-                <dd>+0원</dd>
-              </dl>
-              <dl className='total'>
-                <dt>결제예상금액</dt>
-                <dd>0원</dd>
-              </dl>
-            </div>
-            <div className="order-box">
-              <button className='order-btn'>
-                <strong></strong>
-                주문하기
-              </button>
-            </div>
-          </div>
-        </article>
-      }
-    </>
+    <article className='payment-box'>
+      <div className='box-sticky'>
+        <div className="payment-result">
+          <dl className='amount'>
+            <dt className='amount-item'>총 상품금액</dt>
+            <dd className='amount-price'>{sumPrice.toLocaleString()}원</dd>
+            <dt>배송비</dt>
+            <dd>+{sumPrice == 0 ? 0 : sumPrice >= 30000 ? 0 : SHIPPING}원</dd>
+          </dl>
+          <dl className='total'>
+            <dt>결제예상금액</dt>
+            <dd>{sumPrice == 0 ? 0 : sumPrice >= 30000 ? sumPrice.toLocaleString() : (sumPrice+shipping).toLocaleString()}원</dd>
+          </dl>
+        </div>
+        <div className="order-box">
+          <CartBtn className='order-btn' color={checkCount == 0 ? 'white' : '#CCC'}>
+            <strong></strong>
+            주문하기
+          </CartBtn>
+        </div>
+      </div>
+    </article>
   )
 }
 export default Cart
