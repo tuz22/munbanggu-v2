@@ -157,10 +157,12 @@ function Detail(props) {
               </dl>
               <footer className={price == 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
                 <button className='detail-cart-btn' onClick={ () => {
-                  setAlertCart(true);console.log(dupVal)
-                  dupVal == -1
-                  ? dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }))
-                  : dispatch(increase(itemId.id))
+                  setAlertCart(true);console.log(sale)
+                  dupVal !== -1
+                  ? dispatch(increase(itemId.id))
+                  : discount == null
+                    ? dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }))
+                    : dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : sale, count : count }))
                 }}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
               </footer>
