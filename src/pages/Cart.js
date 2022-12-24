@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { decrease, increase, dropItem, checkItem } from './../store/cartSlice';
-import { checkToggle } from './../store/checkSlice';
 
 const Container = styled.div`
   width: 1200px;
@@ -143,10 +142,14 @@ function Payment(){
   const SHIPPING = shipping.toLocaleString()
   let [sumPrice, setSumPrice] = useState(0);
   let priceArr = [];
-
   if (state.length > 0) {
     state && state.map((a, i) => {
-      let amountPrice = (state[i].price * state[i].count)
+      let amountPrice;
+      if (state[i].checked) {
+        amountPrice = (state[i].price * state[i].count)
+      } else {
+        amountPrice = 0
+      }
       return priceArr.push(amountPrice)
     })
   } else {
