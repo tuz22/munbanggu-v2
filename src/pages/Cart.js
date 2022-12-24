@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { decrease, increase, dropItem } from './../store/cartSlice';
+import { decrease, increase, dropItem, checkItem } from './../store/cartSlice';
 import { checkToggle } from './../store/checkSlice';
 
 const Container = styled.div`
@@ -46,14 +46,32 @@ function CartItem(){
   const checkCount = useSelector((state) => state.checkCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const checkItem = [];
+  let checkArr = [];
+  const [checkAll, setCheckAll] = useState('')
+
+  useEffect(() => {
+    let checkTimer = setTimeout(() => { 
+    let checkLength = checkArr.length;
+    let cartLength = state.length;
+
+      { checkLength === cartLength 
+        ? setCheckAll('checked') 
+        : setCheckAll('')
+      } 
+
+    }, 100);
+    
+    return () => {
+      clearTimeout(checkTimer)
+    }
+  })
   return (
     <>
       {state.length > 0 
       ? <div>
           <div className='cart-header'>
             <div className='check-box'>
-              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkToggle())}} checked={checkCount === 0 ? true : false}/>
+              <input type='checkbox' id='@checkAll' onClick={() => {}} checked={checkAll}/>
               <label htmlFor='@checkAll'>전체선택</label>
             </div>
             <button className='select-del-btn'>선택삭제</button>
@@ -61,13 +79,14 @@ function CartItem(){
           { state && state.map((a, i) => {
               const cartItemId = state[i].id
               const checkId = '@check' + i
-              checkItem.push(i)
               return (
                 <div>
                   <ul className='cart-list' key={i}>
                     <li>
                       <div className='check-box'>
-                        <input type='checkbox' id={checkId} onClick={() => {dispatch(checkToggle())}} checked={checkCount === 0 ? true : false}/>
+                        <input type='checkbox' id={checkId} onClick={() => {dispatch(checkItem(cartItemId))}} 
+                          checked={state[i].checked ? true && checkArr.push(cartItemId) : false && checkArr.drop(cartItemId)}
+                        />
                         <label htmlFor={checkId} />
                       </div>
                       <div className="list-box">

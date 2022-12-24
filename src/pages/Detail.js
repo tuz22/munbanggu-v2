@@ -161,8 +161,8 @@ function Detail(props) {
                   dupVal !== -1
                   ? dispatch(increase(itemId.id))
                   : discount == null
-                    ? dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count }))
-                    : dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : sale, count : count }))
+                    ? dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count, checked : true }))
+                    : dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : sale, count : count, checked : true }))
                 }}>장바구니</button>
                 <button className='detail-buy-btn'>바로 구매하기</button>
               </footer>

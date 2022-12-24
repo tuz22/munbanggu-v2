@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { useState } from 'react';
 
 const cartSlice = createSlice({
   name :'cartItem',
@@ -22,10 +23,18 @@ const cartSlice = createSlice({
       if (state[cartItemId].count > 0) {
         state[cartItemId].count--
       }
-    }
+    },
+    checkItem(state, action){
+      let cartItemId = state.findIndex((data) => { return data.id == action.payload})
+      if (state[cartItemId].checked === true) {
+        state[cartItemId].checked = false
+      } else {
+        state[cartItemId].checked = true
+      }
+    },
   }
 })
 
-export const { addItem, dropItem, increase, decrease } = cartSlice.actions
+export const { addItem, dropItem, increase, decrease, checkItem} = cartSlice.actions
 
 export default cartSlice;
