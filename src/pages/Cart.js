@@ -42,7 +42,6 @@ function Cart(){
 
 function CartItem(){
   let state = useSelector((state) => state.cartItem);
-  const checkCount = useSelector((state) => state.checkCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let checkArr = [];
@@ -137,11 +136,11 @@ function CartItem(){
 
 function Payment(){
   const state = useSelector((state) => state.cartItem)
-  const checkCount = useSelector((state) => state.checkCount)
   const shipping = 3000;
   const SHIPPING = shipping.toLocaleString()
   let [sumPrice, setSumPrice] = useState(0);
   let priceArr = [];
+
   if (state.length > 0) {
     state && state.map((a, i) => {
       let amountPrice;
@@ -153,13 +152,16 @@ function Payment(){
       return priceArr.push(amountPrice)
     })
   } else {
-    sumPrice = 0;
+    sumPrice = 0
   }
 
   useEffect(() => {
     setTimeout(() => {
-      sumPrice = priceArr.reduce((sum, itemPrice) => sum + itemPrice)
-      setSumPrice(sumPrice)
+
+      if (priceArr.length > 0 ){
+        let a = priceArr.reduce((sum, itemPrice) => sum + itemPrice)
+        setSumPrice(a)
+      }
     }, 100);
   })
   
@@ -179,7 +181,7 @@ function Payment(){
           </dl>
         </div>
         <div className="order-box">
-          <CartBtn className='order-btn' color={checkCount === 0 && sumPrice !== 0 ? 'white' : '#CCC'}>
+          <CartBtn className='order-btn' color={sumPrice !== 0 ? 'white' : '#CCC'}>
             <strong></strong>
             주문하기
           </CartBtn>
