@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useState } from 'react';
 
 const cartSlice = createSlice({
   name :'cartItem',
@@ -32,9 +31,17 @@ const cartSlice = createSlice({
         state[cartItemId].checked = true
       }
     },
+    checkAllOn(state, action){
+      let cartItemId = state.findIndex((data) => { return data.id == action.payload})
+        state[cartItemId].checked = true
+    },
+    checkAllOff(state, action){
+      let cartItemId = state.findIndex((data) => { return data.id == action.payload})
+        state[cartItemId].checked = false
+    }
   }
 })
 
-export const { addItem, dropItem, increase, decrease, checkItem} = cartSlice.actions
+export const { addItem, dropItem, increase, decrease, checkItem, checkAllOn, checkAllOff } = cartSlice.actions
 
 export default cartSlice;
