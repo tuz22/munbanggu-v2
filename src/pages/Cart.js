@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { decrease, increase, dropItem, checkItem, checkAllOff } from './../store/cartSlice';
+import { decrease, increase, dropItem, checkItem, checkAllItem } from './../store/cartSlice';
 
 const Container = styled.div`
   width: 1200px;
@@ -69,7 +69,7 @@ function CartItem(){
       ? <div>
           <div className='cart-header'>
             <div className='check-box'>
-              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkAllOff())}} checked={checkAll}/>
+              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkAllItem(checkArr.length))}} checked={checkAll}/>
               <label htmlFor='@checkAll'>전체선택</label>
             </div>
             <button className='select-del-btn'>선택삭제</button>
