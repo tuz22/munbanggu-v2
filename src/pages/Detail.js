@@ -78,7 +78,7 @@ function Detail(props) {
   }, [currentSlide]);
 
   useEffect(() => {
-    const timer = (alertCart == true)
+    const timer = (alertCart === true)
     ? setTimeout(() => { setAlertCart(false) }, 2000)
     : null
     return () => {
@@ -94,16 +94,16 @@ function Detail(props) {
           <div className='item-info'>
             <div className='badge'>
               <span className='discount'>
-                { discount == null ? '' : discount + '% SALE' }
+                { discount === null ? '' : discount + '% SALE' }
               </span>
-              <BadgeState className='badge-name' color={itemId.state == 'NEW' ? '#2AC1BC' : '#6236FF'}>
-                { itemId.state == '' ? '' : itemId.state }
+              <BadgeState className='badge-name' color={itemId.state === 'NEW' ? '#2AC1BC' : '#6236FF'}>
+                { itemId.state === '' ? '' : itemId.state }
               </BadgeState>
             </div>
             <h3 className='name'>{itemId.title}</h3>
             <p>
-              <strike className='sale-price'>{ discount == null ? '' : PRICE + ' '}</strike>
-              { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
+              <strike className='sale-price'>{ discount === null ? '' : PRICE + ' '}</strike>
+              { (price === 'SOLD OUT') ? price : (discount === null) ? PRICE + '원' : SALE + '원' }
             </p>
           </div>
           <div className='item-preview'>
@@ -144,7 +144,7 @@ function Detail(props) {
                   </div>
                   <div className="price">
                     <span>
-                      { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
+                      { (price === 'SOLD OUT') ? price : (discount === null) ? PRICE + '원' : SALE + '원' }
                     </span>
                   </div>
                 </div>
@@ -152,15 +152,15 @@ function Detail(props) {
               <dl className="total-price">
                 <dt>총 금액</dt>
                 <dd>
-                  <span>{ (price == 'SOLD OUT') ? price : discount == null ? (price * count).toLocaleString()+'원' : (sale * count).toLocaleString() +'원'}</span>
+                  <span>{ (price === 'SOLD OUT') ? price : discount === null ? (price * count).toLocaleString()+'원' : (sale * count).toLocaleString() +'원'}</span>
                 </dd>
               </dl>
-              <footer className={price == 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
+              <footer className={price === 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
                 <button className='detail-cart-btn' onClick={ () => {
                   setAlertCart(true);console.log(sale)
                   dupVal !== -1
                   ? dispatch(increase(itemId.id))
-                  : discount == null
+                  : discount === null
                     ? dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : itemId.price, count : count, checked : true }))
                     : dispatch(addItem({ id : itemId.id, thumbnail1 : itemId.thumbnail1, title : itemId.title, price : sale, count : count, checked : true }))
                 }}>장바구니</button>
@@ -169,7 +169,7 @@ function Detail(props) {
             </section>
           </div>
         </header>
-        <div className={alertCart == true ? 'cartBtn-on' : 'cartBtn-off'}>
+        <div className={alertCart === true ? 'cartBtn-on' : 'cartBtn-off'}>
           <div className='cartBtn-click'>
             장바구니에 상품을 담았습니다.
             <Link to='/cart' className='cart-link'>장바구니로 이동</Link>
@@ -182,7 +182,7 @@ function Detail(props) {
                 tabData && tabData.map((a, i) => {
                   return (
                     <li>
-                      <a className={i == active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
+                      <a className={i === active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
                     </li>
                   )
                 })
