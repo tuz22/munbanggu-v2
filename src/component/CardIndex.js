@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const ItemInfo = styled.div`
   color : ${props => props.color};
@@ -28,11 +28,11 @@ function CardIndex(props){
           <span className='discount'>
             { discount === null ? '' : discount + '% SALE' }
           </span>
-          <BadgeState className='badge-name' $color={state === 'NEW' ? '#2AC1BC' : state === 'GREEN' ? '#0c952a' : '#6236FF'}>
+          <BadgeState className='badge-name' color={state === 'NEW' ? '#2AC1BC' : state === 'GREEN' ? '#0c952a' : '#6236FF'}>
             { state === '' ? '' : state }
           </BadgeState>
         </div>
-        <ItemInfo className='info' $color={isHovering ? '#2AC1BC' : 'black'}>
+        <ItemInfo className='info' color={isHovering ? '#2AC1BC' : 'black'}>
           <h4>{props.item.title}</h4>
           <div>
             <p>

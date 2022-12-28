@@ -32,7 +32,7 @@ const BadgeState = styled.span`
 
 function Detail(props) {
   const {id} = useParams()
-  const itemId = props.item.find((a) => a.id === id)
+  const itemId = props.item.find((a) => a.id == id)
   const discount = itemId.discount;
   const price = itemId.price;
   const PRICE = price.toLocaleString();
@@ -47,7 +47,7 @@ function Detail(props) {
   const [alertCart, setAlertCart] = useState(false);
 
   const cartItem = useSelector((state) => state.cartItem);
-  const dupVal = cartItem.findIndex((data) => data.id === itemId.id);
+  const dupVal = cartItem.findIndex((data) => data.id == itemId.id);
 
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -182,7 +182,7 @@ function Detail(props) {
                 tabData && tabData.map((a, i) => {
                   return (
                     <li>
-                      <a className={i === active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
+                      <a className={i == active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
                     </li>
                   )
                 })
