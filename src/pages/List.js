@@ -22,20 +22,20 @@ function List(props){
   const count = props.category.count;
   const category = props.category.category;
   const item = useContext(Context2).item;
-  const listItem = item.filter(e => e.category == category);
+  const listItem = item.filter(e => e.category === category);
   
   return (
     <Container>
       <Header className='list-header'>
         <h2>
           {props.category.category}
-          <span>{isNaN(count) == true ? count : `총 ${count}개`}</span>
+          <span>{isNaN(count) === true ? count : `총 ${count}개`}</span>
         </h2>
         <article>{props.category.content}</article>
       </Header>
       <div className='card-list'>
       {
-        category == '전체' 
+        category === '전체' 
         ? item && item.map((a, i) => {
             return (
               <CardIndex item={item[i]} />

@@ -26,18 +26,18 @@ function CardIndex(props){
       <img src={isHovering ? props.item.thumbnail2 : props.item.thumbnail1} alt="" />
         <div className='badge'>
           <span className='discount'>
-            { discount == null ? '' : discount + '% SALE' }
+            { discount === null ? '' : discount + '% SALE' }
           </span>
-          <BadgeState className='badge-name' $color={state == 'NEW' ? '#2AC1BC' : state == 'GREEN' ? '#0c952a' : '#6236FF'}>
-            { state == '' ? '' : state }
+          <BadgeState className='badge-name' $color={state === 'NEW' ? '#2AC1BC' : state === 'GREEN' ? '#0c952a' : '#6236FF'}>
+            { state === '' ? '' : state }
           </BadgeState>
         </div>
         <ItemInfo className='info' $color={isHovering ? '#2AC1BC' : 'black'}>
           <h4>{props.item.title}</h4>
           <div>
             <p>
-              <strike className='sale-price'>{ discount == null ? '' : PRICE + ' '}</strike>
-              { (price == 'SOLD OUT') ? price : (discount == null) ? PRICE + '원' : SALE + '원' }
+              <strike className='sale-price'>{ discount === null ? '' : PRICE + ' '}</strike>
+              { (price === 'SOLD OUT') ? price : (discount === null) ? PRICE + '원' : SALE + '원' }
             </p>
           </div>
         </ItemInfo>

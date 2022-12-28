@@ -10,7 +10,7 @@ import { categories } from './categories.js';
 import List from './pages/List.js';
 import CardIndex from './component/CardIndex.js'
 import Cart from './pages/Cart.js'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { subChange } from './store/subSlice';
 import { useRef } from 'react';
 import { useEffect } from 'react';
@@ -20,7 +20,7 @@ export const Context2 = createContext();
 function App() {
   const [item] = useState(data);
   const [category] = useState(categories);
-  const newItem = item.filter(e => e.date == 221201)
+  const newItem = item.filter(e => e.date === 221201)
   const bestItem = item.filter(e => e.stock < 100)
   const firstItem = item.filter(e => e.date < 220600)
   const saleItem = item.filter(e => e.discount !== null)
@@ -30,7 +30,7 @@ function App() {
   const [bg, setBg] = useState('bgOff')
   const handleScroll = () => {
 
-    if (window.scrollY == 0 ){
+    if (window.scrollY === 0 ){
       setBg('bgOff')
     } else {
       setBg('bgOn')
@@ -185,14 +185,14 @@ function App() {
           <div>
             <nav className='footer-nav'>
               <ul>
-                <li><a href='#'>About</a></li>
-                <li><a href='#'>공지사항</a></li>
-                <li><a href='#'>이용약관</a></li>
-                <li><a href='#'><b>개인정보처리방침</b></a></li>
-                <li><a href='#'>대량구매/제휴안내</a></li>
+                <li>About</li>
+                <li>공지사항</li>
+                <li>이용약관</li>
+                <li><b>개인정보처리방침</b></li>
+                <li>대량구매/제휴안내</li>
               </ul>
               <p className='link-sns'>
-                <a href='https://www.instagram.com/baemin_store/?hl=ko' target='_blank'>@baemin_store</a>
+                <a href='https://www.instagram.com/baemin_store/?hl=ko' target='_blank' rel='noopener noreferrer'>@baemin_store</a>
               </p>
             </nav>
             <div className='footer-content'>
