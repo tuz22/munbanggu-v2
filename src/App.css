@@ -482,6 +482,8 @@
 }
 .footer-nav li {
   margin-right: 24px;
+  font-family: minsansVF;
+  font-weight: 600;
 }
 .link-sns a {
   font-size: 16px;
