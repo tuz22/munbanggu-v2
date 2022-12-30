@@ -42,7 +42,6 @@ function Detail(props) {
   const tabData = ['상품정보', '기본정보', '상품후기'];
   const [active, setActive] = useState('')
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const [alertCart, setAlertCart] = useState(false);
 
@@ -181,8 +180,8 @@ function Detail(props) {
               {
                 tabData && tabData.map((a, i) => {
                   return (
-                    <li>
-                      <a className={i == active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }}>{a}</a>
+                    <li key={i}>
+                      <a className={i == active ? 'active' : ''} value={i} onClick={(e) => { setTab(i); setActive(e.target.getAttribute('value')) }} >{a}</a>
                     </li>
                   )
                 })

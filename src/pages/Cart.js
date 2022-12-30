@@ -78,8 +78,8 @@ function CartItem(){
               const cartItemId = state[i].id
               const checkId = '@check' + i
               return (
-                <div>
-                  <ul className='cart-list' key={i}>
+                <div key={i}>
+                  <ul className='cart-list'>
                     <li>
                       <div className='check-box'>
                         <input type='checkbox' id={checkId} onClick={() => {dispatch(checkItem(cartItemId))}} 

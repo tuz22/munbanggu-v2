@@ -70,4 +70,4 @@ const categories = [
     count : "since.2013",
   },
 ]
-export {categories};
+export default categories;

@@ -38,16 +38,16 @@ function List(props){
         category === '전체' 
         ? item && item.map((a, i) => {
             return (
-              <CardIndex item={item[i]} />
+              <CardIndex key={i} item={item[i]} />
             )
           }) 
         : listItem && listItem.map((a, i) => {
             return (
-              <CardIndex item={listItem[i]} />
+              <CardIndex key={i} item={listItem[i]} />
             )
           })
       }
-    </div>
+      </div>
     </Container>
   )
 }

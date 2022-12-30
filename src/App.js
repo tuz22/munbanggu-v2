@@ -1,19 +1,17 @@
 import './default.css';
 import './App.css';
-import SubNav from './component/SubNav.js';
-import { createContext, useState } from 'react';
-import Carousel from './component/Carousel.js';
-import data from './data.js';
+import { createContext, useState, useRef, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import Detail from './pages/Detail.js';
-import { categories } from './categories.js';
-import List from './pages/List.js';
-import CardIndex from './component/CardIndex.js'
-import Cart from './pages/Cart.js'
 import { useDispatch } from 'react-redux';
 import { subChange } from './store/subSlice';
-import { useRef } from 'react';
-import { useEffect } from 'react';
+import SubNav from './component/SubNav.js';
+import Carousel from './component/Carousel.js';
+import CardIndex from './component/CardIndex.js'
+import data from './data/data.js';
+import categories from './data/categories.js';
+import Detail from './pages/Detail.js';
+import List from './pages/List.js';
+import Cart from './pages/Cart.js'
 export const Context = createContext();
 export const Context2 = createContext();
 
@@ -168,7 +166,7 @@ function App() {
         {
           categories.map((a, i) => {
             const listUrl = "goods/list/"+ i
-            return ( <Route path={listUrl} element={
+            return ( <Route path={listUrl} key={i} element={
               <Context2.Provider value={ {item} }>
                 <List category={category[i]}/>
               </Context2.Provider>

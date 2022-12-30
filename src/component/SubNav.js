@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { categories } from './../categories'
+import categories from '../data/categories'
 import { subChange } from './../store/subSlice';
 
 function SubNav() {
@@ -36,8 +35,8 @@ function SubNav() {
             { categories.map((data) => {
               let link = '/goods/list/' + data.id
               return (
-                <Link to={link}>
-                  <li key={data.id} onClick={() => dispatch(subChange()) }>{data.category}</li>
+                <Link to={link} key={data.id}>
+                  <li onClick={() => dispatch(subChange()) }>{data.category}</li>
                 </Link>
               )
             })}
