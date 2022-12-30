@@ -69,7 +69,7 @@ function CartItem(){
       ? <div>
           <div className='cart-header'>
             <div className='check-box'>
-              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkAllItem(checkArr.length))}} checked={checkAll}/>
+              <input type='checkbox' id='@checkAll' onClick={() => {dispatch(checkAllItem(checkArr.length))}} checked={checkAll} readOnly />
               <label htmlFor='@checkAll'>전체선택</label>
             </div>
             <button className='select-del-btn'>선택삭제</button>
@@ -83,7 +83,7 @@ function CartItem(){
                     <li>
                       <div className='check-box'>
                         <input type='checkbox' id={checkId} onClick={() => {dispatch(checkItem(cartItemId))}} 
-                          checked={state[i].checked ? true && checkArr.push(cartItemId) : false && checkArr.drop(cartItemId)}
+                          checked={state[i].checked ? true && checkArr.push(cartItemId) : false && checkArr.drop(cartItemId)} readOnly
                         />
                         <label htmlFor={checkId} />
                       </div>
@@ -103,7 +103,7 @@ function CartItem(){
                       </div>
                       <div className="cart-info">
                         <div className="quantity">
-                          <input type="text" value={state[i].count}/>
+                          <input type="text" value={state[i].count} readOnly />
                           <button className='btn-minus' onClick={() => {dispatch(decrease(cartItemId))}}>-</button>
                           <button className='btn-plus' onClick={() => {dispatch(increase(cartItemId))}}>+</button>
                         </div>

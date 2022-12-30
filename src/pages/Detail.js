@@ -137,7 +137,7 @@ function Detail(props) {
                 <h4>{itemId.title}</h4>
                 <div className="buy-options">
                   <div className="quantity">
-                    <input type="text" value={count}/>
+                    <input type="text" value={count} readOnly />
                     <button className='btn-minus' onClick={() => { count > 1 && setCount(count-1)}}>-</button>
                     <button className='btn-plus' onClick={() => {setCount(count+1)}}>+</button>
                   </div>
