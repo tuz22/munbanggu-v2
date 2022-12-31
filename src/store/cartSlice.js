@@ -26,7 +26,6 @@ const cartSlice = createSlice({
         state[cartItemId].checked = false
       } else {
         state[cartItemId].checked = true
-        console.log(state[cartItemId].checked)
       }
     },
     checkAllItem(state, action){

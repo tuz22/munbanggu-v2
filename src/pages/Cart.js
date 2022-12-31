@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { decrease, increase, dropItem, checkItem, checkAllItem } from './../store/cartSlice';
 
 const Container = styled.div`
@@ -44,8 +44,8 @@ function CartItem(){
   let state = useSelector((state) => state.cartItem);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let checkArr = [];
   const [checkAll, setCheckAll] = useState('')
+  let checkArr = [];
 
   useEffect(() => {
     let checkTimer = setTimeout(() => { 

@@ -154,7 +154,7 @@ function Detail(props) {
               </dl>
               <footer className={price === 'SOLD OUT' ? 'hidden' : 'buy-btn-box'}>
                 <button className='detail-cart-btn' onClick={ () => {
-                  setAlertCart(true);console.log(sale)
+                  setAlertCart(true)
                   dupVal !== -1
                   ? dispatch(increase(itemId.id))
                   : discount === null
@@ -196,7 +196,6 @@ function Detail(props) {
 function TabContent({tab, id}){
   const {item} = useContext(Context);
   const itemInfo = item[id];
-  // console.log('id'+id)
 
   return (
     <ViewBox>

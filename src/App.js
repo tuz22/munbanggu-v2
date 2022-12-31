@@ -26,14 +26,7 @@ function App() {
 
   const scrollRef = useRef(null);
   const [bg, setBg] = useState('bgOff')
-  const handleScroll = () => {
-
-    if (window.scrollY === 0 ){
-      setBg('bgOff')
-    } else {
-      setBg('bgOn')
-    }
-  };
+  const handleScroll = () => { window.scrollY === 0 ? setBg('bgOff') : setBg('bgOn') };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,33 +42,22 @@ function App() {
     <div className="App" ref={scrollRef}>
       <title>배민문방구</title>
       <div className= {`${bg} header-container` }>
-        <header className=''>
+        <header>
           <Link to='/'>
             <button className='logo logo-btn'>로고</button>
           </Link>
           <nav>
             <ul>
-              <Link to='/goods/list/0'>
-                <li>전체</li>
-              </Link>
-              <Link to='/goods/list/1'>
-                <li>문구</li>
-              </Link>
-              <Link to='/goods/list/2'>
-                <li>리빙</li>
-              </Link>
-              <Link to='/goods/list/3'>
-                <li>책/메거진F</li>
-              </Link>
-              <Link to='/goods/list/4'>
-                <li>배민그린</li>
-              </Link>
-              <Link to='/goods/list/5'>
-                <li>배달이친구들</li>
-              </Link>
-              <Link to='/goods/list/6'>
-                <li>콜라보레이션</li>
-              </Link>
+              {
+                categories.map((data) => {
+                  let link = '/goods/list/' + data.id
+                  return (
+                    <Link to={link} key={data.id}>
+                      <li>{data.category}</li>
+                    </Link>
+                  )
+                })
+              }
             </ul>
           </nav>
           <ul>

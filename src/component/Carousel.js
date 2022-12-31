@@ -6,7 +6,6 @@ function Carousel(){
   const slideRef = useRef(null);
   
   const slideBtn = ((e) => {
-    // console.log((e.target.innerHTML)-1)
     setCurrentSlide((e.target.innerHTML)-1);
   })
   
@@ -17,6 +16,7 @@ function Carousel(){
       setCurrentSlide(currentSlide - 1);
     }
   })
+  
   const nextBtn = (() => {
     if ( currentSlide >= TOTAL_SLIDES) {
       setCurrentSlide(0)
