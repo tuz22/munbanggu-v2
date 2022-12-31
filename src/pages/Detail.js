@@ -93,7 +93,7 @@ function Detail(props) {
               <span className='discount'>
                 { discount === null ? '' : discount + '% SALE' }
               </span>
-              <BadgeState className='badge-name' color={itemId.state === 'NEW' ? '#2AC1BC' : itemId.state === 'GREEN' ? '#0c952a' : '#6236FF'}>
+              <BadgeState className='badge-name' color={ itemId.state === 'NEW' ? '#2AC1BC' : itemId.state === 'GREEN' ? '#0c952a' : '#6236FF' }>
                 { itemId.state === '' ? '' : itemId.state }
               </BadgeState>
             </div>
