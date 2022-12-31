@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Context } from './../App.js';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, increase } from './../store/cartSlice';
+import { Context } from './../App.js';
 
 const Container = styled.div`
   width : 1200px;
@@ -87,15 +87,13 @@ function Detail(props) {
   return (
     <div className='detail-container'>
       <Container>
-        {/* <h4>detail 페이지</h4> */}
-        {/* <h4>{itemId.title}</h4> */}
         <header className='detail-header'>
           <div className='item-info'>
             <div className='badge'>
               <span className='discount'>
                 { discount === null ? '' : discount + '% SALE' }
               </span>
-              <BadgeState className='badge-name' color={itemId.state === 'NEW' ? '#2AC1BC' : '#6236FF'}>
+              <BadgeState className='badge-name' color={state === 'NEW' ? '#2AC1BC' : state === 'GREEN' ? '#0c952a' : '#6236FF'}>
                 { itemId.state === '' ? '' : itemId.state }
               </BadgeState>
             </div>
