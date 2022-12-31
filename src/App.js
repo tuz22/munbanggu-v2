@@ -1,6 +1,6 @@
 import './default.css';
 import './App.css';
-import { createContext, useState, useRef, useEffect } from 'react';
+import { createContext, useState, useRef, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { subChange } from './store/subSlice';
@@ -9,9 +9,11 @@ import Carousel from './component/Carousel.js';
 import CardIndex from './component/CardIndex.js'
 import data from './data/data.js';
 import categories from './data/categories.js';
-import Detail from './pages/Detail.js';
-import List from './pages/List.js';
-import Cart from './pages/Cart.js'
+
+const Detail = lazy(() => import('./pages/Detail.js'));
+const List = lazy(() => import('./pages/List.js'));
+const Cart = lazy(() => import('./pages/Cart.js'));
+
 export const Context = createContext();
 export const Context2 = createContext();
 
@@ -39,6 +41,7 @@ function App() {
   }, []);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="App" ref={scrollRef}>
       <title>배민문방구</title>
       <div className= {`${bg} header-container` }>
@@ -190,7 +193,8 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </Suspense>
   );
 }
 
