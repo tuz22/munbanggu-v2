@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ItemInfo = styled.div`
+  font-family : minsansVF;
+  font-weight : 400;
+  font-size : 16px;
   color : ${props => props.color};
 `
 const BadgeState = styled.span`
