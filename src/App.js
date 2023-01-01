@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux';
 import { subChange } from './store/subSlice';
 import SubNav from './component/SubNav.js';
 import Carousel from './component/Carousel.js';
-import CardIndex from './component/CardIndex.js'
 import data from './data/data.js';
 import categories from './data/categories.js';
+import Main from './pages/Main.js';
 
 const Detail = lazy(() => import('./pages/Detail.js'));
 const List = lazy(() => import('./pages/List.js'));
@@ -20,10 +20,6 @@ export const Context2 = createContext();
 function App() {
   const [item] = useState(data);
   const [category] = useState(categories);
-  const newItem = item.filter(e => e.date === 221201)
-  const bestItem = item.filter(e => e.stock < 100)
-  const firstItem = item.filter(e => e.date < 220600)
-  const saleItem = item.filter(e => e.discount !== null)
   const dispatch = useDispatch()
 
   const scrollRef = useRef(null);
@@ -74,73 +70,11 @@ function App() {
         </header>
       </div>
       <SubNav />
-      {/* 메인 페이지 */}
       <Routes>
-        <Route path="/" element= {
+        <Route exact path="/" element= {
           <>
             <Carousel />
-            <section className='main-container'>
-              <article className='event-content'>
-                <img src="./../assets/img/card-banner1.jpg" alt="" />
-                <div className='event-list'>
-                  <div className='card-box'>
-                    {
-                      newItem && newItem.map((data) => {
-                        return (
-                          <CardIndex key={data.id} item={data} />
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-                <div className='btn-box'>
-                  <button className='item-btn item-prev-btn'>prev</button>
-                  <button className='item-btn item-next-btn'>next</button>
-                </div>
-              </article>
-              <article className='main-content'>
-                <h3 className='main-title'>요즘 잘 나가요</h3>
-                <div className='card-list'>
-                  {
-                      bestItem && bestItem.map((data) => {
-                      return (
-                        <CardIndex key={data.id} item={data} />
-                      )
-                    })
-                  }
-                </div>
-              </article>
-              <article className='event-content'>
-                <img src="./../assets/img/card-banner2.png" alt="" />
-                <div className='event-list'>
-                  <div className='card-box'>
-                    {
-                      firstItem && firstItem.map((data) => {
-                        return (
-                          <CardIndex key={data.id} item={data} />
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-                <div className='btn-box'>
-                  <button className='item-btn item-prev-btn'>prev</button>
-                  <button className='item-btn item-next-btn'>next</button>
-                </div>
-              </article>
-              <article className='main-content'>
-                <h3 className='main-title'>지금은 할인중</h3>
-                <div className='card-list sale-list'>
-                  {
-                    saleItem && saleItem.map((data) => {
-                      return (
-                          <CardIndex key={data.id} item={data} />
-                      )
-                    })
-                  }
-                </div>
-              </article>
-            </section>
+            <Main />
           </>
         } />
         <Route path="/goods/detail/:id" element={
@@ -158,7 +92,7 @@ function App() {
             } />)
           })
         }
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/cart" component={Cart} element={<Cart />}></Route>
       </Routes>
       <footer className='footer'>
         <div className='footer-container'>
