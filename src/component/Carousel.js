@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Carousel(){
+  const navigate = useNavigate();
   const TOTAL_SLIDES = 4;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -34,29 +36,29 @@ function Carousel(){
     <div className='carousel'>
       <div className='carousel-container' ref={slideRef}>
         <div className='carousel-box'>
-          <a href='/goods/detail/0'>
-            <img src="./../assets/img/banner1.jpg" draggable="false" alt="메인베너1" />
-          </a>
+          <button onClick={() => {navigate('/goods/detail/0')}} >
+            <img src={process.env.PUBLIC_URL + '/assets/img/banner1.jpg'} draggable="false" alt="메인베너1" />
+          </button>
         </div>
         <div className='carousel-box'>
-          <a href='/goods/detail/1'>
-            <img src="./../assets/img/banner2.jpg" draggable="false" alt="메인베너2" />
-          </a>
+          <button onClick={() => {navigate('/goods/detail/1')}} >
+            <img src={process.env.PUBLIC_URL + '/assets/img/banner2.jpg'} draggable="false" alt="메인베너2" />
+          </button>
         </div>
         <div className='carousel-box'>
-          <a href='/goods/detail/4'>
-            <img src="./../assets/img/banner3.jpg" draggable="false" alt="메인베너3" />
-          </a>
+          <button onClick={() => {navigate('/goods/detail/4')}} >
+            <img src={process.env.PUBLIC_URL + '/assets/img/banner3.jpg'} draggable="false" alt="메인베너3" />
+          </button>
         </div>
         <div className='carousel-box'>
-          <a href='/goods/detail/6'>
-            <img src="./../assets/img/banner4.jpg" draggable="false" alt="메인베너4" />
-          </a>
+          <button onClick={() => {navigate('/goods/detail/6')}} >
+            <img src={process.env.PUBLIC_URL + '/assets/img/banner4.jpg'} draggable="false" alt="메인베너4" />
+          </button>
         </div>
         <div className='carousel-box'>
-          <a href='/goods/detail/12'>
-            <img src="./../assets/img/banner5.png" draggable="false" alt="메인베너5" />
-          </a>
+          <button onClick={() => {navigate('/goods/detail/12')}} >
+            <img src={process.env.PUBLIC_URL + '/assets/img/banner5.png'} draggable="false" alt="메인베너5" />
+          </button>
         </div>
       </div>
       <div className='carousel-btn'>

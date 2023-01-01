@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ItemInfo = styled.div`
   color : ${props => props.color};
@@ -9,20 +10,20 @@ const BadgeState = styled.span`
 `
 
 function CardIndex(props){
+  const navigate = useNavigate();
   const discount = props.item.discount;
   const price = props.item.price;
   const PRICE = price.toLocaleString();
   const sale = price * (100 - discount) * 0.01;
   const SALE = sale.toLocaleString();
   const state = props.item.state;
-  let detail = '/goods/detail/' + props.item.id;
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => { setIsHovering(true); }
   const handleMouseOut = () => { setIsHovering(false); }
   
   return (
     <div className='card-list-box' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-      <a href={detail}>
+      <button onClick={() => {navigate('/goods/detail/' + props.item.id)}} >
       <img src={isHovering ? props.item.thumbnail2 : props.item.thumbnail1} alt="" />
         <div className='badge'>
           <span className='discount'>
@@ -41,7 +42,7 @@ function CardIndex(props){
             </p>
           </div>
         </ItemInfo>
-      </a>
+        </button>
     </div>
   )
 }
