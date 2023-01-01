@@ -41,7 +41,7 @@ function App() {
   }, []);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className='loading'>⟳</div>}>
     <div className="App" ref={scrollRef}>
       <title>배민문방구</title>
       <div className= {`${bg} header-container` }>
