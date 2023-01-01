@@ -36,7 +36,7 @@ function App() {
               <Main />
             </>
           } />
-          <Route path="/goods/detail/:id" element={
+          <Route path="goods/detail/:id" element={
             <Context.Provider value={ {item} }>
               <Detail item={item}/>
             </Context.Provider>
