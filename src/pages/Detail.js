@@ -201,9 +201,9 @@ function TabContent({tab, id}){
     <ViewBox>
       { [ 
           <ItemInfo>
-            <img src={itemInfo.content1} alt="상품상세이미지1" />
-            <img src={itemInfo.content2} alt="상품상세이미지2" />
-            <img src={itemInfo.content3} alt="상품상세이미지3" />
+            <img src={itemInfo.content1} alt="" />
+            <img src={itemInfo.content2} alt="" />
+            <img src={itemInfo.content3} alt="" />
           </ItemInfo>,
           <BasicGuid>
             <h4 className='guide-title'>배송안내</h4>

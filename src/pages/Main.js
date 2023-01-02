@@ -12,7 +12,7 @@ function Main() {
   return (
     <section className='main-container'>
       <article className='event-content'>
-        <img src={process.env.PUBLIC_URL + "/assets/img/card-banner1.jpg"} />
+        <img src={process.env.PUBLIC_URL + "/assets/img/card-banner1.jpg"} alt="카드베너1"/>
         <div className='event-list'>
           <div className='card-box'>
             {
@@ -42,7 +42,7 @@ function Main() {
         </div>
       </article>
       <article className='event-content'>
-        <img src={process.env.PUBLIC_URL + "/assets/img/card-banner2.png"} />
+        <img src={process.env.PUBLIC_URL + "/assets/img/card-banner2.png"} alt="카드베너2"/>
         <div className='event-list'>
           <div className='card-box'>
             {
