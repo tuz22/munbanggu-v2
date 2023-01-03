@@ -34,4 +34,4 @@
 
 #### 6. URL
 
-> [momentum-clone 페이지](https://tuz22.github.io/munbanggu)
+> [munbanggu 페이지](https://tuz22.github.io/munbanggu)
