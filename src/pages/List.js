@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import CardIndex from './../component/CardIndex.js';
+import CardIndex from './../components/CardIndex.js';
 import { CategoryContext } from './../App.js';
 
 let Container = styled.div`

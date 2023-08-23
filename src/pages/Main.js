@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import CardIndex from './../component/CardIndex.js';
+import CardIndex from './../components/CardIndex.js';
 import data from './../data/data.js';
-import Carousel from '../component/Carousel.js';
+import Carousel from '../components/Carousel.js';
 
 function Main() {
     const [item] = useState(data);

@@ -2,9 +2,9 @@ import './default.css';
 import './App.css';
 import { createContext, useState, useRef, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './component/Header.js';
-import Footer from './component/Footer.js';
-import SubNav from './component/SubNav.js';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+import SubNav from './components/SubNav.js';
 
 import data from './data/data.js';
 import categories from './data/categories.js';

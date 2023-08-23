@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { subChange } from './../store/subSlice';
+import { subChange } from '../store/subSlice';
 
 function Header(props) {
     const { category } = props;
