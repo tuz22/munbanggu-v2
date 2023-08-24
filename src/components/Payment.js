@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const SHIPPING_COST = 3000;
@@ -10,11 +9,12 @@ const CartBtn = styled.button`
     border-color: ${(props) => (props.color === '#CCC' ? '#EEE' : '#2AC1BC')};
 `;
 
-function Payment() {
-    const cartItem = useSelector((state) => state.cartItem);
+function Payment({ cartItem }) {
     const [sumPrice, setSumPrice] = useState(0);
 
     const calculateSumPrice = () => {
+        if (!cartItem) return;
+
         const totalAmount = cartItem.reduce((sum, item) => {
             if (item.checked) {
                 return sum + item.price * item.count;
@@ -40,13 +40,7 @@ function Payment() {
     };
 
     useEffect(() => {
-        const priceTimer = setTimeout(() => {
-            calculateSumPrice();
-        }, 100);
-
-        return () => {
-            clearTimeout(priceTimer);
-        };
+        calculateSumPrice();
     });
 
     return (

@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 function Cart() {
-    const state = useSelector((state) => state.cartItem);
+    const cartItem = useSelector((state) => state.cartItem);
     const dispatch = useDispatch();
     const [checkAll, setCheckAll] = useState('');
     const checkArr = [];
@@ -24,7 +24,7 @@ function Cart() {
     useEffect(() => {
         const checkTimer = setTimeout(() => {
             const checkLength = checkArr.length;
-            const cartLength = state.length;
+            const cartLength = cartItem.length;
             setCheckAll(checkLength === cartLength ? 'checked' : '');
         }, 100);
 
@@ -43,7 +43,7 @@ function Cart() {
             <section className="cart-box">
                 {/* 선택한 상품 */}
                 <article className="cart-content">
-                    {state.length > 0 ? (
+                    {cartItem.length > 0 ? (
                         <div>
                             <div className="cart-header">
                                 <div className="check-box">
@@ -60,15 +60,16 @@ function Cart() {
                                 </div>
                                 <button className="select-del-btn">선택삭제</button>
                             </div>
-                            {state.map((item, index) => (
-                                <CartItem
-                                    key={index}
-                                    item={item}
-                                    index={index}
-                                    checkArr={checkArr}
-                                    dispatch={dispatch}
-                                />
-                            ))}
+                            {cartItem &&
+                                cartItem.map((item, index) => (
+                                    <CartItem
+                                        key={index}
+                                        item={item}
+                                        index={index}
+                                        checkArr={checkArr}
+                                        dispatch={dispatch}
+                                    />
+                                ))}
                         </div>
                     ) : (
                         <ul>
@@ -80,7 +81,7 @@ function Cart() {
                     )}
                 </article>
                 {/* 총 상품 금액 */}
-                <Payment />
+                <Payment cartItem={cartItem} />
             </section>
         </Container>
     );
