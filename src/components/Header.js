@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { subChange } from '../store/subSlice';
 import styled from 'styled-components';
+import Search from './Search';
 
 const CartBadge = styled.div`
     background: ${(props) => props.bg};
@@ -68,7 +69,7 @@ function Header(props) {
                     </nav>
                     <ul>
                         <li>
-                            <button className="icon search-btn">검색</button>
+                            <Search />
                         </li>
                         <Link to="/cart">
                             <li className="cart-btn-wrap">
