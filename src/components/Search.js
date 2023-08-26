@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import data from '../data/data';
+import styled from 'styled-components';
+import CardIndex from './CardIndex';
+
+const SearchBox = styled.div``;
 
 function Search() {
     const [isSearchActive, setIsSearchActive] = useState(false);
@@ -7,15 +11,10 @@ function Search() {
     const [searchResults, setSearchResults] = useState([]);
     const searchBoxRef = useRef(null);
 
-    const openSearchBox = () => {
-        setSearchResults([]);
-        setIsSearchActive(true);
-    };
-
-    const closeSearchBox = () => {
+    const toggleSearchBox = () => {
         setSearchValue('');
         setSearchResults([]);
-        setIsSearchActive(false);
+        setIsSearchActive(!isSearchActive);
     };
 
     const getSearch = () => {
@@ -34,38 +33,45 @@ function Search() {
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
-                closeSearchBox();
+                setIsSearchActive(false);
             }
         };
-        document.addEventListener('mousedown', handleClickOutside);
-    }, [isSearchActive]);
+        document.addEventListener('mouseup', handleClickOutside);
+    }, []);
 
     return (
-        <div className="serach-box" ref={searchBoxRef}>
-            {isSearchActive ? (
-                <div className="">
-                    <input
-                        type="text"
-                        placeholder="검색어를 입력해주세요"
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    <button onClick={getSearch} className="icon search-btn">
-                        검색
-                    </button>
+        // <>
+        <div ref={searchBoxRef}>
+            {isSearchActive && (
+                <div className="search-container">
+                    <div className="search-box">
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="검색어를 입력해주세요"
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                        />
+                        {console.log(isSearchActive)}
+                        <button onClick={getSearch} className="icon search-btn">
+                            검색
+                        </button>
+                    </div>
+                    {searchResults && (
+                        <div className="search-results">
+                            {searchResults &&
+                                searchResults.map((result) => {
+                                    return <CardIndex item={result} />;
+                                })}
+                        </div>
+                    )}
                 </div>
-            ) : (
-                <button onClick={openSearchBox} className="icon search-btn">
-                    검색창열기
-                </button>
             )}
-            <div className="search-results">
-                {searchResults &&
-                    searchResults.map((result) => {
-                        return <div key={result.id}>{result.title}</div>;
-                    })}
-            </div>
+            <button onClick={toggleSearchBox} className="icon search-btn">
+                검색창열기
+            </button>
         </div>
+        // </>
     );
 }
 
