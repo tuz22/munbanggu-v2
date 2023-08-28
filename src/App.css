@@ -142,6 +142,7 @@ ul {
     justify-content: center;
     align-items: center;
     padding: 16px;
+    margin-top: -16px;
     border-radius: 8px;
     box-shadow: rgba(18, 18, 18, 0.05) 0px 0px 15px, rgba(18, 18, 18, 0.05) 0px 10px 10px,
         rgba(18, 18, 18, 0.05) 0px 20px 30px;
@@ -166,7 +167,7 @@ ul {
     height: 300px;
     position: absolute;
     left: 0px;
-    top: 80px;
+    top: 62px;
     padding: 0px 16px 16px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(18, 18, 18, 0.05) 0px 0px 15px, rgba(18, 18, 18, 0.05) 0px 10px 10px,
