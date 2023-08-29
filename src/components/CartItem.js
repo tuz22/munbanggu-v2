@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { decrease, increase, dropItem, checkItem } from './../store/cartSlice';
+import Thumbnail from './Thumbnail';
 
 function CartItem({ item, index, checkArr, dispatch }) {
     const { id, title, thumbnail1, price, count, checked } = item;
@@ -52,7 +53,7 @@ function CartItem({ item, index, checkArr, dispatch }) {
                     </div>
                     <div className="list-box" onClick={handleNavigate}>
                         <div className="thumbnail">
-                            <img src={thumbnail1} alt="" />
+                            <Thumbnail thumbnail1={thumbnail1} width={120} height={120} />
                         </div>
                         <div className="list-info">
                             <p className="list-name">{title}</p>

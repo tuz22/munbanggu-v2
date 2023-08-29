@@ -160,7 +160,7 @@ ul {
     border-radius: 5px;
     outline: #2ac1bc solid 2px;
 }
-.search-results {
+.search-results-container {
     display: flex;
     overflow-x: auto;
     width: 100%;
@@ -176,9 +176,14 @@ ul {
     border-bottom-right-radius: 8px;
     /* z-index: -1; */
 }
-.search-results h4 {
-    font-size: 16px;
-    font-weight: 200;
+.search-results {
+    flex: none;
+}
+.search-results h5 {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    font-family: 'minsansVF';
 }
 .cart-btn-wrap {
     display: flex;
