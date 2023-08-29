@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import data from '../data/data';
-import styled from 'styled-components';
-import CardIndex from './CardIndex';
-
-const SearchBox = styled.div``;
+import Thumbnail from './Thumbnail';
+import Price from './Price';
 
 function Search() {
     const [isSearchActive, setIsSearchActive] = useState(false);
@@ -58,10 +56,25 @@ function Search() {
                         </button>
                     </div>
                     {searchResults && (
-                        <div className="search-results">
+                        <div className="search-results-container">
                             {searchResults &&
                                 searchResults.map((result) => {
-                                    return <CardIndex item={result} />;
+                                    // return <CardIndex item={result} />;
+                                    console.log(result);
+                                    console.log(result.thumbnail1);
+                                    return (
+                                        <div className="search-results">
+                                            {/* <img src={result.thumbnail1} /> */}
+                                            <Thumbnail
+                                                thumbnail1={result.thumbnail1}
+                                                thumbnail2={result.thumbnail2}
+                                                width={200}
+                                                height={200}
+                                            />
+                                            <h5>{result.title}</h5>
+                                            <Price price={result.price} discount={result.discount} fontSize={14} />
+                                        </div>
+                                    );
                                 })}
                         </div>
                     )}
