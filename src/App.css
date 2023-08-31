@@ -160,7 +160,7 @@ ul {
     border-radius: 5px;
     outline: #2ac1bc solid 2px;
 }
-.search-results-container {
+/* .search-results-container {
     display: flex;
     overflow-x: auto;
     width: 100%;
@@ -174,8 +174,7 @@ ul {
         rgba(18, 18, 18, 0.05) 0px 20px 30px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    /* z-index: -1; */
-}
+} */
 .search-results {
     flex: none;
 }
