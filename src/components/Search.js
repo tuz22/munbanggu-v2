@@ -58,7 +58,6 @@ function Search() {
         const filteredResults = data.filter((item) => {
             return item.title.includes(searchValue);
         });
-        console.log('filteredResults', filteredResults);
         if (filteredResults.length < 1) {
             setIsNullResults(true);
         } else {
@@ -66,6 +65,12 @@ function Search() {
         }
 
         setSearchResults(filteredResults);
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            getSearch(searchValue);
+        }
     };
 
     const handleClick = (id) => {
@@ -84,7 +89,6 @@ function Search() {
     }, []);
 
     return (
-        // <>
         <div ref={searchBoxRef}>
             {isSearchActive && (
                 <div className="search-container">
@@ -95,6 +99,7 @@ function Search() {
                             placeholder="검색어를 입력해주세요"
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
+                            onKeyPress={handleKeyPress}
                         />
                         {console.log(isSearchActive)}
                         <button onClick={getSearch} className="icon search-btn">
@@ -134,7 +139,6 @@ function Search() {
                 검색창열기
             </button>
         </div>
-        // </>
     );
 }
 
