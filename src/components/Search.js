@@ -100,6 +100,7 @@ function Search() {
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                             onKeyPress={handleKeyPress}
+                            ref={(input) => input && input.focus()}
                         />
                         {console.log(isSearchActive)}
                         <button onClick={getSearch} className="icon search-btn">
