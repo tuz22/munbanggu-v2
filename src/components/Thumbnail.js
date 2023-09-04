@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Thumbnail({ thumbnail1, thumbnail2 = thumbnail1, width = 270, height = 270 }) {
+function Thumbnail({ thumbnail1, thumbnail2 = thumbnail1, width = 270, height = 'auto' }) {
     const [isHovering, setIsHovering] = useState(false);
     const handleMouseOver = () => {
         setIsHovering(true);

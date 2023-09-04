@@ -6,6 +6,7 @@
     color: black;
     font-weight: 400;
 }
+
 /* 마우스 포인터 */
 .header-container nav ul li:hover,
 .nav-container ul li:hover,
@@ -478,7 +479,7 @@ ul {
     height: 420px;
     overflow: hidden;
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
 }
 .main-content {
     position: relative;
@@ -1263,4 +1264,51 @@ ul {
     border-radius: 6px;
     cursor: default;
     pointer-events: none;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .header-container nav {
+        display: none;
+    }
+    .main-container {
+        width: 100vw;
+    }
+    .carousel {
+        margin-top: -10px;
+    }
+    .carousel-container img {
+        min-width: 0;
+        min-height: 0;
+    }
+    .carousel-btn {
+        margin-top: 0;
+    }
+    .event-content {
+        margin-top: 40px;
+    }
+    .card-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-list-box {
+        width: 50vw;
+        margin: 10px 0;
+    }
+    .card-box {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    .card-box .card-list-box {
+        width: 50vw;
+        margin: 10px 0;
+    }
+    .card-box .card-list-box button {
+        width: 50vw;
+        height: auto;
+    }
+    .btn-box {
+        display: none;
+    }
 }
