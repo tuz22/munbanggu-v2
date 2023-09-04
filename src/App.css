@@ -1268,14 +1268,32 @@ ul {
 
 /* 모바일 */
 @media (max-width: 768px) {
+    .header-container {
+        padding: 0 10px;
+        min-width: 0;
+        height: auto;
+    }
+    .header-container header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .logo {
+        margin-top: 0;
+    }
     .header-container nav {
+        display: none;
+    }
+    .search-btn-wrap {
+        display: none;
+    }
+    .login-btn {
         display: none;
     }
     .main-container {
         width: 100vw;
     }
     .carousel {
-        margin-top: -10px;
+        margin-top: 0;
     }
     .carousel-container img {
         min-width: 0;

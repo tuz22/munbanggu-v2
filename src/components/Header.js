@@ -68,7 +68,7 @@ function Header(props) {
                         </ul>
                     </nav>
                     <ul>
-                        <li>
+                        <li className="search-btn-wrap">
                             <Search />
                         </li>
                         <Link to="/cart">
