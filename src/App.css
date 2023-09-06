@@ -591,6 +591,7 @@ ul {
 /* detail 페이지 - header*/
 .detail-container {
     width: 100%;
+    display: flex;
 }
 .detail-header {
     display: flex;
@@ -1362,5 +1363,15 @@ ul {
         display: flex;
         flex-wrap: wrap;
         margin: 20px 0 10px 0;
+    }
+
+    /* detail page */
+    .detail-container {
+        display: flex;
+        justify-content: center;
+    }
+    .detail-header {
+        display: flex;
+        flex-direction: column;
     }
 }
