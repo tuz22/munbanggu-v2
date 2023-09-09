@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, increase } from './../store/cartSlice';
 import { Context } from './../App.js';
+import Carousel from '../components/Carousel';
 
 const Container = styled.div`
     background: none;
@@ -49,34 +50,7 @@ function Detail(props) {
 
     const cartItem = useSelector((state) => state.cartItem);
     const dupVal = cartItem.findIndex((data) => data.id == itemId.id);
-
-    const TOTAL_SLIDES = 1;
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const slideRef = useRef(null);
-
-    const slideBtn = (e) => {
-        setCurrentSlide(e.target.innerHTML - 1);
-    };
-
-    const prevBtn = () => {
-        if (currentSlide <= 0) {
-            setCurrentSlide(0);
-        } else {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
-    const nextBtn = () => {
-        if (currentSlide >= TOTAL_SLIDES) {
-            setCurrentSlide(0);
-        } else {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
-
-    useEffect(() => {
-        slideRef.current.style.transform = `translateX(-${currentSlide * 5}00px)`;
-        slideRef.current.style.transition = 'all 1s ease';
-    }, [currentSlide]);
+    const [thumbnails, setThumbnails] = useState([]);
 
     useEffect(() => {
         const timer =
@@ -89,6 +63,23 @@ function Detail(props) {
             clearTimeout(timer);
         };
     });
+
+    const getThumbnail = (itemId) => {
+        const thumbnailsArr = [];
+
+        for (const key in itemId) {
+            if (key.startsWith('thumbnail')) {
+                thumbnailsArr.push({ ['thumbnail']: itemId[key] });
+            }
+        }
+        setThumbnails(thumbnailsArr);
+    };
+
+    useEffect(() => {
+        getThumbnail(itemId);
+        console.log(thumbnails);
+    }, []);
+
     return (
         <div className="detail-container">
             <Container>
@@ -116,30 +107,7 @@ function Detail(props) {
                         </p>
                     </div>
                     <div className="item-preview">
-                        <div className="carousel">
-                            <div className="carousel-container" ref={slideRef}>
-                                <div className="carousel-box">
-                                    <img src={itemId.thumbnail1} draggable="false" alt="아이템1" />
-                                </div>
-                                <div className="carousel-box">
-                                    <img src={itemId.thumbnail2} draggable="false" alt="아이템2" />
-                                </div>
-                            </div>
-                            <div className="btn-box">
-                                <button onClick={prevBtn} className="item-btn item-prev-btn">
-                                    prev
-                                </button>
-                                <button onClick={nextBtn} className="item-btn item-next-btn">
-                                    next
-                                </button>
-                            </div>
-                            <div className="carousel-btn">
-                                <div className="slide-btn">
-                                    <button onClick={slideBtn}>1</button>
-                                    <button onClick={slideBtn}>2</button>
-                                </div>
-                            </div>
-                        </div>
+                        <Carousel item={thumbnails} />
                     </div>
                     <div className="item-order">
                         <dl className="shipping">

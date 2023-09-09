@@ -338,7 +338,7 @@ ul {
 }
 .carousel-container .carousel-box {
     width: 100vw;
-    background-color: rgb(249, 249, 249);
+    background-color: white;
 }
 .carousel-container img {
     width: 100%;
@@ -640,7 +640,7 @@ ul {
 }
 .item-preview .carousel-container .carousel-box {
     /* width: 580px; */
-    background-color: rgb(249, 249, 249);
+    background-color: white;
 }
 .item-preview .carousel-container img {
     width: 100%;
@@ -1373,5 +1373,17 @@ ul {
     .detail-header {
         display: flex;
         flex-direction: column;
+    }
+    .item-preview .carousel-container img {
+        width: 70%;
+        height: auto;
+        min-width: 0;
+        min-height: 0;
+    }
+    .carousel-container .carousel-box {
+        width: auto;
+    }
+    .item-order {
+        width: auto;
     }
 }

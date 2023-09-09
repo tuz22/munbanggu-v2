@@ -2,9 +2,11 @@ import { useState } from 'react';
 import CardIndex from './../components/CardIndex.js';
 import data from './../data/data.js';
 import Carousel from '../components/Carousel.js';
+import mainBanner from './../data/mainBanner';
 
 function Main() {
     const [item] = useState(data);
+    const [bannerData] = useState(mainBanner);
     const newItem = item.filter((e) => e.date === 221201);
     const bestItem = item.filter((e) => e.stock < 100);
     const firstItem = item.filter((e) => e.date < 220600);
@@ -12,7 +14,7 @@ function Main() {
 
     return (
         <>
-            <Carousel />
+            <Carousel item={bannerData} />
             <section className="main-container">
                 <article className="event-content">
                     <img src={process.env.PUBLIC_URL + '/assets/img/card-banner1.jpg'} alt="카드베너1" />
