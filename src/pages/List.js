@@ -4,17 +4,18 @@ import CardIndex from './../components/CardIndex.js';
 import { CategoryContext } from './../App.js';
 
 let Container = styled.div`
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     height: 100%;
     margin: 0px auto;
-    padding: 80px 0px 200px;
+    padding: 80px 0px 200px 0px;
     display: flex;
     flex-direction: column;
 `;
 let Header = styled.div`
     padding-bottom: 60px;
     border-bottom: 1px solid rgb(221, 221, 221);
-    height: 216px;
+    // height: 216px;
     // display: flex;
 `;
 
@@ -25,7 +26,7 @@ function List(props) {
     const listItem = item.filter((e) => e.category === category);
 
     return (
-        <Container>
+        <Container className="">
             <Header className="list-header">
                 <h2>
                     {props.category.category}

@@ -954,6 +954,8 @@ ul {
     line-height: 74px;
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
+    word-break: keep-all;
 }
 .list-header span {
     margin: 8px 0px 0px 14px;
@@ -1325,6 +1327,7 @@ ul {
     .card-list {
         display: flex;
         flex-wrap: wrap;
+        width: 100vw;
     }
     .card-list-box {
         width: 50vw;
@@ -1385,5 +1388,9 @@ ul {
     }
     .item-order {
         width: auto;
+    }
+    /* list */
+    .list-header {
+        padding: 0 20px 60px 20px;
     }
 }
