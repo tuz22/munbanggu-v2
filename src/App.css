@@ -1393,4 +1393,39 @@ ul {
     .list-header {
         padding: 0 20px 60px 20px;
     }
+    /* cart */
+    .cart-box {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-content {
+        width: auto;
+        margin: 10px;
+        padding: 0;
+    }
+    .cart-list {
+        border-left: 1px solid #ddd;
+    }
+    .cart-list li {
+        display: flex;
+        flex-direction: column;
+    }
+    .list-box .list-info {
+        width: auto;
+    }
+    .check-box {
+        position: absolute;
+        left: 0;
+    }
+    .cart-info {
+        display: flex;
+        justify-content: center;
+    }
+    .payment-box {
+        display: flex;
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }
 }

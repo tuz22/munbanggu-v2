@@ -6,8 +6,6 @@ import CartItem from '../components/CartItem';
 import Payment from '../components/Payment';
 
 const Container = styled.div`
-    width: 1200px;
-    height: 100%;
     margin: 0px auto;
     padding: 80px 0px 200px;
     font-family: sans-serif;
