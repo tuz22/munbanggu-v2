@@ -1398,6 +1398,7 @@ ul {
         width: auto;
         display: flex;
         flex-direction: column;
+        margin: 10px 0;
     }
     .cart-content {
         width: auto;
@@ -1411,21 +1412,30 @@ ul {
         display: flex;
         flex-direction: column;
     }
+    .list-box {
+        width: 90vw;
+        margin: 0 10px;
+    }
     .list-box .list-info {
-        width: auto;
+        width: 60vw;
     }
     .check-box {
         position: absolute;
         left: 0;
+        margin-left: 5px;
     }
     .cart-info {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
     }
     .payment-box {
-        display: flex;
-        position: relative;
         width: auto;
         margin: 10px;
+        display: flex;
+        position: relative;
+        justify-content: center;
+    }
+    .payment-box .box-sticky {
+        width: 100vw;
     }
 }
