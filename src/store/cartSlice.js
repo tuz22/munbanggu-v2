@@ -36,23 +36,22 @@ const cartSlice = createSlice({
             const cartItemId = state.findIndex((data) => {
                 return data.id === action.payload;
             });
-            if (state[cartItemId].checked === true) {
-                state[cartItemId].checked = false;
-            } else {
-                state[cartItemId].checked = true;
+            if (cartItemId !== -1) {
+                state[cartItemId].checked = !state[cartItemId].checked;
             }
         },
         checkAllItem(state, action) {
-            let checkLength = action.payload;
-            let cartLength = state.length;
-            if (checkLength > 0) {
-                for (let i = 0; i < checkLength; i++) {
-                    state[i].checked = false;
-                }
+            const checked = state.filter((item) => item.checked).length;
+            const totalChecked = state.length;
+
+            if (checked === totalChecked) {
+                state.forEach((item) => {
+                    item.checked = false;
+                });
             } else {
-                for (let i = 0; i < cartLength; i++) {
-                    state[i].checked = true;
-                }
+                state.forEach((item) => {
+                    item.checked = true;
+                });
             }
         },
     },
