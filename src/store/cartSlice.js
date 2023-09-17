@@ -8,31 +8,32 @@ const cartSlice = createSlice({
             state.push(action.payload);
         },
         dropItem(state, action) {
-            let cartItemId = state.findIndex((data) => {
+            const cartItemId = state.findIndex((data) => {
                 return data.id === action.payload;
             });
-            if (cartItemId) {
+            if (cartItemId !== -1) {
                 return state.filter((data) => data.id !== action.payload);
-            } else {
-                return state;
             }
+            return state;
         },
         increase(state, action) {
-            let cartItemId = state.findIndex((data) => {
+            const cartItemId = state.findIndex((data) => {
                 return data.id === action.payload;
             });
-            state[cartItemId].count++;
+            if (cartItemId !== -1) {
+                state[cartItemId].count++;
+            }
         },
         decrease(state, action) {
-            let cartItemId = state.findIndex((data) => {
+            const cartItemId = state.findIndex((data) => {
                 return data.id === action.payload;
             });
-            if (state[cartItemId].count > 0) {
+            if (cartItemId !== -1 && state[cartItemId].count > 0) {
                 state[cartItemId].count--;
             }
         },
         checkItem(state, action) {
-            let cartItemId = state.findIndex((data) => {
+            const cartItemId = state.findIndex((data) => {
                 return data.id === action.payload;
             });
             if (state[cartItemId].checked === true) {
