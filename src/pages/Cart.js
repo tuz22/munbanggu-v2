@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAllItem } from './../store/cartSlice';
+import { checkAllItem, checkItem } from './../store/cartSlice';
 import CartItem from '../components/CartItem';
 import Payment from '../components/Payment';
 
@@ -20,16 +20,17 @@ function Cart() {
     const checkArr = [];
 
     useEffect(() => {
-        const checkTimer = setTimeout(() => {
-            const checkLength = checkArr.length;
-            const cartLength = cartItem.length;
-            setCheckAll(checkLength === cartLength ? 'checked' : '');
-        }, 100);
+        const allChecked = cartItem.length > 0 && cartItem.every((item) => item.checked);
+        setCheckAll(allChecked);
+    }, [cartItem]);
 
-        return () => {
-            clearTimeout(checkTimer);
-        };
-    });
+    const handleCheckAll = () => {
+        dispatch(checkAllItem());
+    };
+
+    const handleCheckItem = (itemId) => {
+        dispatch(checkItem(itemId));
+    };
 
     return (
         <Container className="cart-container">
@@ -48,9 +49,7 @@ function Cart() {
                                     <input
                                         type="checkbox"
                                         id="@checkAll"
-                                        onClick={() => {
-                                            dispatch(checkAllItem(checkArr.length));
-                                        }}
+                                        onClick={handleCheckAll}
                                         checked={checkAll}
                                         readOnly
                                     />
@@ -66,6 +65,7 @@ function Cart() {
                                         index={index}
                                         checkArr={checkArr}
                                         dispatch={dispatch}
+                                        checkItem={handleCheckItem}
                                     />
                                 ))}
                         </div>
