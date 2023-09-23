@@ -59,7 +59,7 @@ function Main() {
                     <h3 className="main-title">지금은 할인중</h3>
                     <div className="card-list sale-list">
                         {saleItem &&
-                            saleItem.map((data) => {
+                            saleItem.slice(0, 4).map((data) => {
                                 return <CardIndex key={data.id} item={data} />;
                             })}
                     </div>

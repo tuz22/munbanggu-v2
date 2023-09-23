@@ -476,7 +476,7 @@ ul {
     flex-direction: column;
 }
 .sale-list {
-    height: 420px;
+    /* height: 420px; */
     overflow: hidden;
     display: flex;
     /* flex-direction: row-reverse; */
